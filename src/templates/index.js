@@ -34,6 +34,13 @@ export function renderIndex ({
 
 			<link href="styles/index.css" type="text/css" rel="stylesheet" />
 
+			<link rel="icon" href="/assets/favicon/32x32.png"   sizes="32x32"   />
+			<link rel="icon" href="/assets/favicon/128x128.png" sizes="128x128" />
+			<link rel="icon" href="/assets/favicon/192x192.png" sizes="192x192" />
+			<link rel="icon" href="/assets/favicon/512x512.png" sizes="512x512" />
+
+			<link rel="apple-touch-icon" href="/assets/favicon/180x180.png" />
+
 		</head>
 
 		<body class="app">
