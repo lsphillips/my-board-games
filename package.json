@@ -1,0 +1,40 @@
+{
+	"name" : "@lsphillips/my-board-games",
+
+	"version" : "1.0.0",
+
+	"type" : "module",
+
+	"description" : "The source code for the board game collection web application of Luke S. Phillips.",
+
+	"author" : "Luke Phillips",
+
+	"devDependencies" :
+	{
+        "js-yaml" : "4.1.0",
+        "fast-xml-parser" : "4.5.1",
+        "htmlnano" : "2.1.1",
+        "esbuild" : "0.25.0",
+        "eslint" : "9.21.0",
+        "eslint-plugin-import" : "2.31.0",
+        "eslint-plugin-promise" : "7.2.1",
+        "eslint-plugin-n" : "17.15.1",
+        "@stylistic/eslint-plugin-js" : "3.1.0",
+        "eslint-config-protect-me-from-my-stupidity" : "13.0.1"
+	},
+
+	"scripts" :
+	{
+        "lint" : "eslint \"**/*.js\"",
+		"build" : "node build.js",
+        "start" : "node build.js develop"
+	},
+
+	"repository" :
+	{
+		"type" : "git",
+		"url" : "https://github.com/lsphillips/my-board-games.git"
+	},
+
+	"private" : true
+}

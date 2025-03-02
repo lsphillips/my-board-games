@@ -1,0 +1,350 @@
+locations:
+
+  shelves:
+    name: Shelves
+    accessible: true
+
+  cupboard:
+    name: Cupboard
+    accessible: true
+
+  storage:
+    name: Storage
+    accessible: false
+
+games:
+
+  - name: 6 nimmt!
+    id: 406321
+    favourite: true
+    location: shelves
+
+  - name: Agricola
+    id: 31260
+    location: storage
+    expansions:
+      - name: Farmers of the Moor
+        id: 43018
+        location: storage
+
+  - name: Argy Bargey
+    id: 352296
+    location: storage
+
+  - name: Azul
+    id: 230802
+    location: shelves
+
+  - name: Bandido
+    id: 191925
+    location: cupboard
+
+  - name: Bandida
+    id: 299571
+    location: cupboard
+
+  - name: Books of Time
+    id: 372631
+    location: cupboard
+
+  - name: Boss Monster
+    id: 131835
+    location: cupboard
+    expansions:
+      - name: Tools of Hero-Kind
+        id: 133772
+        location: cupboard
+      - name: Paper & Pixels
+        id: 164095
+
+  - name: "Boss Monster 2: The Next Level"
+    id: 174973
+    location: cupboard
+
+  - name: Calico
+    id: 283155
+    location: shelves
+
+  - name: "Canine Chaos Card Game: Celebrity Edition"
+    id: 283000
+    location: storage
+
+  - name: Canvas
+    id: 290236
+    location: cupboard
+
+  - name: Captain Flip
+    id: 393325
+    location: cupboard
+    expansions:
+      - name: In the Jaws of the Kraken
+        id: 413556
+
+  - name: Cascadia
+    id: 295947
+    location: shelves
+
+  - name: Chocobo's Crystal Hunt
+    id: 205226
+    location: shelves
+    expansions:
+      - name: Chocobo's Dungeons & Monsters
+        id: 223685
+
+  - name: Citadels
+    id: 478
+    location: cupboard
+
+  - name: Codenames
+    id: 178900
+    location: shelves
+
+  - name: Dixit
+    id: 39856
+    location: shelves
+
+  - name: Dobble
+    id: 63268
+    location: storage
+
+  - name: Everdell
+    id: 199792
+    location: shelves
+    favourite: true
+    expansions:
+      - name: Bellfaire
+        id: 289057
+      - name: Mistwood
+        id: 332397
+      - name: Newleaf
+        id: 332390
+      - name: Pearlbrook
+        id: 259996
+      - name: Spirecrest
+        id: 289056
+
+  - name: Flamecraft
+    id: 336986
+    location: cupboard
+
+  - name: Forbidden Desert
+    id: 136063
+    location: shelves
+
+  - name: Four Gardens
+    id: 296043
+    location: shelves
+
+  - name: Forest Shuffle
+    id: 391163
+    location: cupboard
+
+  - name: Friday
+    id: 43570
+    location: storage
+
+  - name: Gizmos
+    id: 246192
+    location: shelves
+    favourite: true
+
+  - name: Gloom
+    id: 12692
+    location: shelves
+
+  - name: Go Nuts for Donuts
+    id: 184346
+    location: shelves
+    favourite: true
+
+  - name: Gorinto
+    id: 270293
+    location: shelves
+
+  - name: Hanabi
+    id: 98778
+    location: shelves
+    favourite: true
+
+  - name: "Hanabi Deluxe: What a Show!"
+    id: 290357
+    location: cupboard
+    favourite: true
+
+  - name: Herd Mentality
+    id: 311322
+    location: storage
+
+  - name: Keep the Heroes Out!
+    id: 333255
+    location: shelves
+    favourite: true
+    expansions:
+      - name: Guild Master's Revenge Expansion
+        id: 351550
+      - name: The Great Dreamer Expansion
+        id: 351549
+
+  - name: Little Town
+    id: 241266
+    location: cupboard
+
+  - name: Mysterium
+    id: 181304
+    location: shelves
+    expansions:
+      - name: Secrets & Lies
+        id: 216465
+        location: cupboard
+      - name: Hidden Signs
+        id: 192661
+        location: cupboard
+
+  - name: Mysterium Park
+    id: 301767
+    location: shelves
+
+  - name: Oh My Goods!
+    id: 183840
+    location: shelves
+    expansions:
+      - name: Escape to Canyon Brook
+        id: 233363
+        location: shelves
+      - name: Longsdale in Revolt
+        id: 209323
+        location: shelves
+
+  - name: Olympus Fluxx
+    id: 356084
+    location: shelves
+
+  - name: Paleo
+    id: 300531
+    location: cupboard
+    favourite: true
+    expansions:
+      - name: A New Beginning
+        id: 342501
+        location: cupboard
+
+  - name: Patchwork
+    id: 163412
+    location: shelves
+
+  - name: Point Salad
+    id: 274960
+    location: shelves
+
+  - name: Rhino Hero
+    id: 91514
+    location: cupboard
+
+  - name: "Room on the Broom: Memory Card Game"
+    id: 199954
+    location: storage
+
+  - name: Sakura Arms
+    id: 204493
+    location: cupboard
+
+  - name: Scythe
+    id: 169786
+    location: storage
+
+  - name: Septima
+    id: 360692
+    location: cupboard
+
+  - name: Smash Up
+    id: 122522
+    location: storage
+    expansions:
+      - name: Big in Japan
+        id: 216199
+
+  - name: Sushi Go!
+    id: 133473
+    location: cupboard
+
+  - name: Takenoko
+    id: 70919
+    location: cupboard
+    favourite: true
+    expansions:
+      - name: Chibis
+        id: 174095
+
+  - name: Tavern Masters
+    id: 210418
+    location: cupboard
+
+  - name: "The Crew: Mission Deep Sea"
+    id: 324856
+    location: shelves
+    favourite: true
+
+  - name: Turing Machine
+    id: 356123
+    location: shelves
+    favourite: true
+
+  - name: The Isle of Cats
+    id: 281259
+    location: shelves
+    favourite: true
+    expansions:
+      - name: Late Arrivals
+        id: 287361
+
+  - name: The One Hundred Torii
+    id: 256509
+    location: shelves
+
+  - name: The Quacks of Quedlinburg
+    id: 244521
+    location: shelves
+
+  - name: The Ravens of Thri Sahashri
+    id: 150293
+    location: storage
+
+  - name: Throw Throw Avocado
+    id: 340420
+    location: cupboard
+
+  - name: Tiny Towns
+    id: 265736
+    location: shelves
+
+  - name: "UNO: Super Mario"
+    id: 209095
+    location: storage
+
+  - name: Viticulture Essential Edition
+    id: 183394
+    location: shelves
+
+  - name: Whirling Witchcraft
+    id: 335275
+    location: cupboard
+    favourite: true
+
+  - name: Wingspan
+    id: 266192
+    location: shelves
+    expansions:
+      - name: European
+        id: 290448
+      - name: Asia
+        id: 366161
+        location: shelves
+
+  - name: Wyrmspan
+    id: 410201
+    location: shelves
+    favourite: true
+
+  - name: Yes! No! Game
+    id: 13356
+    location: storage

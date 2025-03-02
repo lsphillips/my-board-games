@@ -1,0 +1,126 @@
+.finder
+{
+	display: none;
+	flex-flow: column nowrap;
+	box-sizing: border-box;
+	z-index: 20;
+	height: 100%;
+	width: 90%;
+	max-width: 420px;
+	max-height: 100%;
+	padding: 15px;
+	margin: 0 -100% auto auto;
+	border: 0;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+	transition:
+		overlay 0.3s allow-discrete,
+		display 0.3s allow-discrete,
+		margin 0.3s;
+
+	&::backdrop
+	{
+		transition:
+			overlay 0.3s allow-discrete,
+			display 0.3s allow-discrete,
+			opacity 0.3s;
+
+		background: #000;
+		opacity: 0;
+	}
+
+	&[open]
+	{
+		display: flex;
+		margin-right: 0;
+
+		&::backdrop { opacity: 0.4 }
+	}
+}
+
+@starting-style
+{
+	.finder[open]
+	{
+		display: flex;
+		margin-right: -100%;
+
+		&::backdrop { opacity: 0 }
+	}
+}
+
+.finder__title
+{
+	height: 30px;
+	padding: 0;
+	margin: 0 0 25px;
+	line-height: 30px;
+	font-size: 18px;
+	font-weight: normal;
+}
+
+.finder__close
+{
+	position: absolute;
+	top: 18px;
+	right: 18px;
+	display: block;
+	width: 24px;
+	height: 24px;
+	padding: 0;
+	margin: 0;
+	color: #171a1d;
+	border: 0;
+	background: none;
+	cursor: pointer;
+
+	&:hover,
+	&:focus
+	{
+		color: #000;
+	}
+
+	&:focus { outline: 0 }
+}
+
+.finder__close-icon
+{
+	color: currentColor;
+}
+
+.finder__form
+{
+	display: contents;
+}
+
+.finder__criteria
+{
+	flex: 1 1 auto;
+}
+
+.finder__players,
+.finder__accessibility
+{
+	margin: 0 0 20px;
+}
+
+.finder__submit
+{
+	box-sizing: border-box;
+	display: block;
+	width: 100%;
+	padding: 10px 20px;
+	font: inherit;
+	font-size: 15px;
+	color: #eeeef1;
+	background: #171a1d;
+	border: 0;
+	border-radius: 3px;
+	cursor: pointer;
+
+	&:hover,
+	&:focus
+	{
+		outline: 0;
+		background: #000;
+	}
+}

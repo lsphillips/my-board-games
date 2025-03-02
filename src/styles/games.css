@@ -1,0 +1,44 @@
+.games
+{
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: center;
+	flex: 1 1 auto;
+}
+
+.games__summary
+{
+	padding: 0;
+	margin: 10px 10px 0;
+	color: #888;
+}
+
+.games__game-count,
+.games__expansion-count
+{
+	color: #171a1d;
+	font-weight: bold;
+}
+
+.games__collection
+{
+	list-style: none;
+	padding: 5px;
+	margin: 0;
+	flex: 1 1 auto;
+}
+
+.games__item
+{
+	display: block;
+	padding: 5px;
+}
+
+.games__no-matching-games
+{
+	display: none;
+	padding: 10px;
+	text-align: center;
+	color: #888;
+	font-size: 15px;
+}

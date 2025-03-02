@@ -1,0 +1,157 @@
+.thumbnail
+{
+	box-sizing: border-box;
+	position: relative;
+	margin: 0;
+	max-width: none;
+	background: #f8f8f8;
+
+	&::before
+	{
+		display: block;
+		padding-top: 100%;
+		content: '';
+	}
+}
+
+.thumbnail__image
+{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	max-height: 100%;
+	max-width: 100%;
+	transform: translateY(-50%) translateX(-50%);
+	border-radius: 3px;
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+.game
+{
+	position: relative;
+	box-sizing: border-box;
+	display: flex;
+	flex-flow: row wrap;
+	align-items: center;
+	padding: 10px;
+	background: #fff;
+	border-radius: 3px;
+	border-bottom: 1px solid #ccc;
+}
+
+.game__thumbnail
+{
+	display: block;
+	width: 55px;
+	margin: 0 10px 0 0;
+	border-radius: 3px;
+}
+
+.game__info
+{
+	flex: 0 0 calc(100% - 65px);
+}
+
+.game__name
+{
+	padding: 0;
+	margin: 0;
+	font-size: 15px;
+	color: #171a1d;
+}
+
+.game__uri
+{
+	text-decoration: none;
+	color: #171a1d;
+
+	&:hover,
+	&:focus
+	{
+		text-decoration: underline;
+	}
+}
+
+.game__metadata
+{
+	margin: 5px 0 0;
+	color: #666;
+	font-size: 12px;
+}
+
+.game__favourite
+{
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	width: 20px;
+	height: 20px;
+	fill: #ffd700;
+}
+
+.game__expansions
+{
+	box-sizing: border-box;
+	display: flex;
+	flex-flow: column nowrap;
+	width: 100%;
+	padding: 10px 0 0 15px;
+	margin: 0;
+	row-gap: 10px;
+	list-style: none;
+}
+
+.game__expansion
+{
+	/* Here to remind that exists. */
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+.expansion
+{
+	display: flex;
+	flex-flow: row wrap;
+	align-items: center;
+}
+
+.expansion__thumbnail
+{
+	display: block;
+	width: 40px;
+	margin: 0 10px 0 0;
+	border-radius: 3px;
+}
+
+.expansion__info
+{
+	flex: 1 0 calc(100% - 50px);
+}
+
+.expansion__name
+{
+	padding: 0;
+	margin: 0;
+	font-size: 14px;
+	color: #171a1d;
+}
+
+.expansion__uri
+{
+	text-decoration: none;
+	color: #171a1d;
+
+	&:hover,
+	&:focus
+	{
+		text-decoration: underline;
+	}
+}
+
+.expansion__metadata
+{
+	margin: 5px 0 0;
+	color: #666;
+	font-size: 11px;
+}
