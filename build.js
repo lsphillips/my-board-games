@@ -2,6 +2,12 @@ import {
 	watch
 } from 'node:fs';
 import {
+	cp
+} from 'node:fs/promises';
+import {
+	join
+} from 'node:path';
+import {
 	Worker
 } from 'node:worker_threads';
 import {
@@ -16,6 +22,34 @@ import {
 } from './src/renderer.js';
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+function observe (path, handler)
+{
+	let working = false,
+		queuing = false;
+
+	watch(path, { recursive : true }, async function work ()
+	{
+		if (working)
+		{
+			queuing = true;
+
+			return;
+		}
+
+		working = true;
+		queuing = false;
+
+		await handler();
+
+		working = false; // eslint-disable-line require-atomic-updates
+
+		if (queuing)
+		{
+			work();
+		}
+	});
+}
 
 function isDeveloping ()
 {
@@ -51,7 +85,16 @@ const config =
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+// Load gamelist.
 const gamelist = await collect('gamelist.yml');
+
+// Copy favicons.
+await cp('src/favicon', join(outdir, 'favicon'), {
+	recursive : true
+});
+
+// Build HTML pages.
+await render(outdir, gamelist);
 
 if (
 	isDeveloping()
@@ -72,64 +115,38 @@ if (
 	// Because we use JS for our "templates" they will be
 	// cached. With no way to purge this cache we need to
 	// perform re-renders in another process.
-	//
-	// To ensure we don't spin up too many workers we only
-	// want one render occurring at any given point.
-	let rendering = false, queued = false;
-
-	watch('src/templates', { recursive : true }, async function rerender ()
+	observe('src/templates', () => new Promise(resolve =>
 	{
-		if (rendering)
-		{
-			queued = true;
+		const worker = new Worker(`
+			import {
+				workerData
+			} from 'node:worker_threads';
+			import {
+				render
+			} from './src/renderer.js';
 
-			return;
-		}
-
-		rendering = true;
-		queued    = false;
-
-		await new Promise((resolve) =>
-		{
-			const worker = new Worker(`
-				import {
-					workerData
-				} from 'node:worker_threads';
-				import {
-					render
-				} from './src/renderer.js';
-
-				await render(workerData.outdir, workerData.gamelist);
-			`, {
-				eval : true, workerData : { outdir, gamelist }
-			});
-
-			worker.on('error', (error) =>
-			{
-				console.error(error);
-
-				resolve();
-			});
-
-			worker.on('exit', resolve);
+			await render(workerData.outdir, workerData.gamelist);
+		`, {
+			eval : true, workerData : { outdir, gamelist }
 		});
 
-		rendering = false; // eslint-disable-line require-atomic-updates
-
-		if (queued)
+		worker.on('error', error =>
 		{
-			rerender();
-		}
-	});
+			console.error(error);
 
-	// Build initial HTML pages.
-	await render(outdir, gamelist);
+			resolve();
+		});
+
+		worker.on('exit', resolve);
+	}));
+
+	// Start watching favicons.
+	observe('src/favicon', () => cp('src/favicon', join(outdir, 'favicon'), {
+		recursive : true
+	}));
 }
 else
 {
 	// Build JS & CSS.
 	await build(config);
-
-	// Build HTML pages.
-	await render(outdir, gamelist);
 }

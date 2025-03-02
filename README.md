@@ -56,7 +56,7 @@ npm run start
 ```
 
 > [!TIP]
-> Changes in [client JavaScript](src/scripts), [stylesheets](src/styles) and [templates](src/templates) will trigger the website to be rebuilt. Any other code file changes will require a server restart.
+> Changes in [client JavaScript](src/scripts), [stylesheets](src/styles), [templates](src/templates) and [favicons](src/favicon) will trigger the website to be rebuilt. Any other code file changes will require a server restart.
 
 ### Code Quality
 
