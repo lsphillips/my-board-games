@@ -14,7 +14,8 @@ import {
 
 export async function render (outdir, {
 	games,
-	stats
+	stats,
+	hash
 })
 {
 	await mkdir(outdir, {
@@ -24,7 +25,8 @@ export async function render (outdir, {
 	const page = await nano.process(
 		renderIndex({
 			games,
-			stats
+			stats,
+			hash
 		}),
 		{
 			collapseAttributeWhitespace : true,

@@ -94,7 +94,9 @@ await cp('src/favicon', join(outdir, 'favicon'), {
 });
 
 // Build HTML pages.
-await render(outdir, gamelist);
+await render(outdir, {
+	...gamelist, hash : Date.now()
+});
 
 if (
 	isDeveloping()
@@ -125,7 +127,9 @@ if (
 				render
 			} from './src/renderer.js';
 
-			await render(workerData.outdir, workerData.gamelist);
+			await render(workerData.outdir, {
+			   ...workerData.gamelist, hash : Date.now()
+			});
 		`, {
 			eval : true, workerData : { outdir, gamelist }
 		});
