@@ -149,6 +149,9 @@ games:
   - name: Forest Shuffle
     id: 391163
     location: cupboard
+    expansions:
+      - name: Alpine
+        id: 412576
 
   - name: Friday
     id: 43570
