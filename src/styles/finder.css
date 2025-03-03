@@ -98,7 +98,8 @@
 }
 
 .finder__players,
-.finder__accessibility
+.finder__accessible,
+.finder__quick
 {
 	margin: 0 0 20px;
 }

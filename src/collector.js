@@ -58,7 +58,8 @@ function embellishGame ({
 	name,
 	location = null,
 	favourite = false,
-	expansions = []
+	expansions = [],
+	quick = false
 }, locations, lookup)
 {
 	if (
@@ -76,7 +77,7 @@ function embellishGame ({
 	}
 
 	const game = {
-		...metadata, name, favourite
+		...metadata, name, favourite, quick
 	};
 
 	// Location.

@@ -134,6 +134,7 @@ export function renderGames (games, stats, {
 				data-min-players="${game.players.min}"
 				data-max-players="${game.players.max}"
 				${ game.accessible ? 'data-accessible' : '' }
+				${ game.quick ? 'data-quick' : '' }
 			>
 				${ renderGame(game) }
 			</li>`, '') }

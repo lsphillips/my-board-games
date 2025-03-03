@@ -19,10 +19,11 @@ export function setup ()
 		const form = new FormData(target);
 
 		const detail = {
-			players : parseInt(
+			accessible : form.get('accessible') !== null,
+			quick      : form.get('quick') !== null,
+			players    : parseInt(
 				form.get('players'), 10
-			),
-			onlyAccessible : form.get('accessible-only') !== null
+			)
 		};
 
 		window.dispatchEvent(new CustomEvent('query', {

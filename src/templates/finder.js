@@ -40,9 +40,13 @@ export function renderFinder (stats, {
 					label     : 'Number of players',
 					className : 'finder__players'
 				}) }
-				${ renderCheckbox('accessible-only', {
-					label     : 'Only include easy to reach games',
-					className : 'finder__accessibility'
+				${ renderCheckbox('accessible', {
+					label     : 'Easy to reach only',
+					className : 'finder__accessible'
+				}) }
+				${ renderCheckbox('quick', {
+					label     : 'Quick to play only',
+					className : 'finder__quick'
 				}) }
 			</div>
 			<div class="finder__actions">

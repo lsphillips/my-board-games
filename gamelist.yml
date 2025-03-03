@@ -18,6 +18,7 @@ games:
     id: 406321
     favourite: true
     location: shelves
+    quick: true
 
   - name: Agricola
     id: 31260
@@ -34,14 +35,17 @@ games:
   - name: Azul
     id: 230802
     location: shelves
+    quick: true
 
   - name: Bandido
     id: 191925
     location: cupboard
+    quick: true
 
   - name: Bandida
     id: 299571
     location: cupboard
+    quick: true
 
   - name: Books of Time
     id: 372631
@@ -72,10 +76,12 @@ games:
   - name: Canvas
     id: 290236
     location: cupboard
+    quick: true
 
   - name: Captain Flip
     id: 393325
     location: cupboard
+    quick: true
     expansions:
       - name: In the Jaws of the Kraken
         id: 413556
@@ -87,6 +93,7 @@ games:
   - name: Chocobo's Crystal Hunt
     id: 205226
     location: shelves
+    quick: true
     expansions:
       - name: Chocobo's Dungeons & Monsters
         id: 223685
@@ -94,18 +101,22 @@ games:
   - name: Citadels
     id: 478
     location: cupboard
+    quick: true
 
   - name: Codenames
     id: 178900
     location: shelves
+    quick: true
 
   - name: Dixit
     id: 39856
     location: shelves
+    quick: true
 
   - name: Dobble
     id: 63268
     location: storage
+    quick: true
 
   - name: Everdell
     id: 199792
@@ -151,29 +162,35 @@ games:
   - name: Gloom
     id: 12692
     location: shelves
+    quick: true
 
   - name: Go Nuts for Donuts
     id: 184346
     location: shelves
     favourite: true
+    quick: true
 
   - name: Gorinto
     id: 270293
     location: shelves
+    quick: true
 
   - name: Hanabi
     id: 98778
     location: shelves
     favourite: true
+    quick: true
 
   - name: "Hanabi Deluxe: What a Show!"
     id: 290357
     location: cupboard
     favourite: true
+    quick: true
 
   - name: Herd Mentality
     id: 311322
     location: storage
+    quick: true
 
   - name: Keep the Heroes Out!
     id: 333255
@@ -203,6 +220,7 @@ games:
   - name: Mysterium Park
     id: 301767
     location: shelves
+    quick: true
 
   - name: Oh My Goods!
     id: 183840
@@ -218,6 +236,7 @@ games:
   - name: Olympus Fluxx
     id: 356084
     location: shelves
+    quick: true
 
   - name: Paleo
     id: 300531
@@ -231,18 +250,22 @@ games:
   - name: Patchwork
     id: 163412
     location: shelves
+    quick: true
 
   - name: Point Salad
     id: 274960
     location: shelves
+    quick: true
 
   - name: Rhino Hero
     id: 91514
     location: cupboard
+    quick: true
 
   - name: "Room on the Broom: Memory Card Game"
     id: 199954
     location: storage
+    quick: true
 
   - name: Sakura Arms
     id: 204493
@@ -266,6 +289,7 @@ games:
   - name: Sushi Go!
     id: 133473
     location: cupboard
+    quick: true
 
   - name: Takenoko
     id: 70919
@@ -278,16 +302,19 @@ games:
   - name: Tavern Masters
     id: 210418
     location: cupboard
+    quick: true
 
   - name: "The Crew: Mission Deep Sea"
     id: 324856
     location: shelves
     favourite: true
+    quick: true
 
   - name: Turing Machine
     id: 356123
     location: shelves
     favourite: true
+    quick: true
 
   - name: The Isle of Cats
     id: 281259
@@ -312,14 +339,17 @@ games:
   - name: Throw Throw Avocado
     id: 340420
     location: cupboard
+    quick: true
 
   - name: Tiny Towns
     id: 265736
     location: shelves
+    quick: true
 
   - name: "UNO: Super Mario"
     id: 209095
     location: storage
+    quick: true
 
   - name: Viticulture Essential Edition
     id: 183394
@@ -329,6 +359,7 @@ games:
     id: 335275
     location: cupboard
     favourite: true
+    quick: true
 
   - name: Wingspan
     id: 266192
@@ -348,3 +379,4 @@ games:
   - name: Yes! No! Game
     id: 13356
     location: storage
+    quick: true

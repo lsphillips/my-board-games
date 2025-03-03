@@ -16,9 +16,10 @@ The games property is a required array that defines the games collection. Each i
 | ------------ | :------: | :-------: | :-----: | ----------------------------------------------------------------------------------------------- |
 | `name`       | Yes      | `string`  |         | The name of the board game.                                                                     |
 | `id`         | Yes      | `number`  |         | The Board Game Geek ID for the board game.                                                      |
-| `favourite`  | No       | `boolean` | `false` | Indicates whether the board game is a favourite or not.                                              |
+| `favourite`  | No       | `boolean` | `false` | Indicates whether the board game is a favourite or not.                                         |
 | `location`   | Yes      | `string`  |         | The key corresponding to a location, defined [here](#locations), that the board game is stored. |
 | `expansions` | No       | `array`   |         | The expansions owned for the board game. This is an array of [expansion objects](#expansions).  |
+| `quick`      | No       | `boolean` | `false` | Indicates if the board game is quick to play.                                                   |
 
 ### Expansions
 

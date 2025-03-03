@@ -11,7 +11,12 @@ function isSupportingPlayerCount (game, criteria)
 
 function isAccessible (game, criteria)
 {
-	return !criteria.onlyAccessible || game.hasAttribute('data-accessible');
+	return !criteria.accessible || game.hasAttribute('data-accessible');
+}
+
+function isQuick (game, criteria)
+{
+	return !criteria.quick || game.hasAttribute('data-quick');
 }
 
 function renderCount (count, one, many, zero = many)
@@ -58,7 +63,7 @@ export function setup ()
 			let playable = false;
 
 			if (
-				!isAccessible(game, detail)
+				!isAccessible(game, detail) || !isQuick(game, detail)
 			)
 			{
 				game.style.display = 'none';
