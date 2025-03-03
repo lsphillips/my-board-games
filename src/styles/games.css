@@ -23,15 +23,17 @@
 .games__collection
 {
 	list-style: none;
-	padding: 5px;
+	display: flex;
+	flex-flow: column nowrap;
+	padding: 10px;
 	margin: 0;
+	row-gap: 10px;
 	flex: 1 1 auto;
 }
 
 .games__item
 {
 	display: block;
-	padding: 5px;
 }
 
 .games__no-matching-games

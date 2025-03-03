@@ -70,7 +70,7 @@ export function setup ()
 
 			if (expansions.length > 0)
 			{
-				let supportedCount = 0;
+				let unsupportedCount = 0;
 
 				for (const expansion of expansions)
 				{
@@ -79,19 +79,20 @@ export function setup ()
 					if (supported)
 					{
 						expansionCount++;
-						supportedCount++;
 
-						expansion.style.display = 'block';
+						expansion.style.display = 'revert-layer';
 					}
 					else
 					{
+						unsupportedCount++;
+
 						expansion.style.display = 'none';
 					}
 
 					playable |= supported;
 				}
 
-				game.querySelector('.game__expansions').style.display = supportedCount === expansions.length ? 'block' : 'none';
+				game.querySelector('.game__expansions').style.display = unsupportedCount === expansions.length ? 'none' : 'revert-layer';
 			}
 
 			playable |= isSupportingPlayerCount(game, detail);
@@ -100,7 +101,7 @@ export function setup ()
 			{
 				gameCount++;
 
-				game.style.display = 'block';
+				game.style.display = 'revert-layer';
 			}
 			else
 			{
@@ -113,8 +114,8 @@ export function setup ()
 
 		if (gameCount)
 		{
-			gameList.style.display     = 'block';
-			summary.style.display      = 'block';
+			gameList.style.display     = 'revert-layer';
+			summary.style.display      = 'revert-layer';
 			emptyMessage.style.display = 'none';
 		}
 		else
