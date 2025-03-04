@@ -1,4 +1,4 @@
-.dropdown
+.select
 {
 	position: relative;
 	display: block;
@@ -7,27 +7,25 @@
 	{
 		position: absolute;
 		bottom: 14px;
-		right: 12px;
+		right: 14px;
 		display: block;
-		border: solid #333;
-		border-width: 2px 2px 0 0;
 		width: 8px;
 		height: 8px;
 		transform: rotate(135deg);
-		content: ' ';
+		border: solid #333;
+		border-width: 2px 2px 0 0;
+		content: '';
 	}
-
-	&:focus-within::after { border-color: #171a1d }
 }
 
-.dropdown__label
+.select__label
 {
 	display: block;
 	margin: 0 0 5px;
 	font-size: 15px;
 }
 
-.dropdown__field
+.select__input
 {
 	appearance: none;
 	box-sizing: border-box;

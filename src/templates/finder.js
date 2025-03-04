@@ -1,6 +1,6 @@
 import {
-	renderDropdown
-} from './dropdown.js';
+	renderSelect
+} from './select.js';
 import {
 	renderCheckbox
 } from './checkbox.js';
@@ -36,7 +36,7 @@ export function renderFinder (stats, {
 		</button>
 		<form method="dialog" class="finder__form">
 			<div class="finder__criteria">
-				${ renderDropdown(options, 'players', {
+				${ renderSelect(options, 'players', {
 					label     : 'Number of players',
 					className : 'finder__players'
 				}) }
