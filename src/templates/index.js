@@ -33,6 +33,8 @@ export function renderIndex ({
 
 			<meta name="viewport" content="width=device-width,initial-scale=1" />
 
+			<meta name="theme-color" content="#171a1d" />
+
 			<link href="styles/index.css?${hash}" type="text/css" rel="stylesheet" />
 
 			<link rel="icon" href="favicon/32x32.png?${hash}" sizes="32x32" />
