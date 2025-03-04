@@ -10,7 +10,8 @@
 {
 	padding: 0;
 	margin: 10px 10px 0;
-	color: #888;
+	font-size: 14px;
+	color: #777;
 }
 
 .games__game-count,
@@ -41,6 +42,6 @@
 	display: none;
 	padding: 10px;
 	text-align: center;
-	color: #888;
+	color: #777;
 	font-size: 15px;
 }
