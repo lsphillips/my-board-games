@@ -14,7 +14,7 @@
         "js-yaml" : "4.1.0",
         "fast-xml-parser" : "5.0.8",
         "htmlnano" : "2.1.1",
-        "esbuild" : "0.25.0",
+        "esbuild" : "0.25.1",
         "eslint" : "9.21.0",
         "eslint-plugin-import" : "2.31.0",
         "eslint-plugin-promise" : "7.2.1",
