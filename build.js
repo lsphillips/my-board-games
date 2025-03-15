@@ -129,7 +129,7 @@ async function copyResources (outdir)
 async function renderTemplates (outdir, gamelist)
 {
 	await render(outdir, {
-		...gamelist, hash : Date.now()
+		...gamelist, timestamp : Date.now()
 	});
 
 	if (
@@ -150,7 +150,7 @@ async function renderTemplates (outdir, gamelist)
 				} from './src/renderer.js';
 
 				await render(workerData.outdir, {
-					...workerData.gamelist, hash : Date.now()
+					...workerData.gamelist, timestamp : Date.now()
 				});
 			`, {
 				eval : true, workerData : { outdir, gamelist }

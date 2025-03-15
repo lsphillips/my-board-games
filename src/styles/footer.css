@@ -13,6 +13,12 @@
 	margin: 0;
 }
 
+.footer__last-updated
+{
+	padding: 0;
+	margin: 5px 0 0;
+}
+
 .footer__link
 {
 	display: inline-block;

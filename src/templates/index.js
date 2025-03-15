@@ -16,7 +16,7 @@ import {
 export function renderIndex ({
 	games,
 	stats,
-	hash
+	timestamp
 })
 {
 	return `<!DOCTYPE html>
@@ -35,16 +35,16 @@ export function renderIndex ({
 
 			<meta name="theme-color" content="#171a1d" />
 
-			<link href="styles/index.css?${hash}" type="text/css" rel="stylesheet" />
+			<link href="styles/index.css?${timestamp}" type="text/css" rel="stylesheet" />
 
-			<link rel="icon" href="favicons/32x32.png?${hash}" sizes="32x32" />
-			<link rel="icon" href="favicons/128x128.png?${hash}" sizes="128x128" />
-			<link rel="icon" href="favicons/192x192.png?${hash}" sizes="192x192" />
-			<link rel="icon" href="favicons/512x512.png?${hash}" sizes="512x512" />
+			<link rel="icon" href="favicons/32x32.png?${timestamp}" sizes="32x32" />
+			<link rel="icon" href="favicons/128x128.png?${timestamp}" sizes="128x128" />
+			<link rel="icon" href="favicons/192x192.png?${timestamp}" sizes="192x192" />
+			<link rel="icon" href="favicons/512x512.png?${timestamp}" sizes="512x512" />
 
-			<link rel="apple-touch-icon" href="favicons/180x180.png?${hash}" />
+			<link rel="apple-touch-icon" href="favicons/180x180.png?${timestamp}" />
 
-			<link rel="manifest" href="manifest.json?${hash}" />
+			<link rel="manifest" href="manifest.json?${timestamp}" />
 
 		</head>
 
@@ -59,6 +59,7 @@ export function renderIndex ({
 			}) : '<p class="app__empty"> I don\'t seem to have any board games! </p>' }
 
 			${ renderFooter({
+				timestamp,
 				className : 'app__footer'
 			}) }
 
@@ -66,7 +67,7 @@ export function renderIndex ({
 				className : 'app__finder'
 			}) }
 
-			<script type="text/javascript" src="scripts/index.js?${hash}"></script>
+			<script type="text/javascript" src="scripts/index.js?${timestamp}"></script>
 
 		</body>
 

@@ -15,7 +15,7 @@ import {
 export async function render (outdir, {
 	games,
 	stats,
-	hash
+	timestamp
 })
 {
 	await mkdir(outdir, {
@@ -26,7 +26,7 @@ export async function render (outdir, {
 		renderIndex({
 			games,
 			stats,
-			hash
+			timestamp
 		}),
 		{
 			collapseAttributeWhitespace : true,
