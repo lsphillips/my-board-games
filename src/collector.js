@@ -81,7 +81,7 @@ function embellishGame ({
 	};
 
 	// BGA.
-	game.bgaUri = bgaId ? bga.buildGameUri(bgaId) : null;
+	game.bga = bgaId ? { id : bgaId, uri : bga.buildGameUri(bgaId) } : null;
 
 	// Location.
 	game.location   = locations[location].name;
