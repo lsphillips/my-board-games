@@ -1,0 +1,31 @@
+{
+	"name" : "Luke S. Phillips - My Board Games",
+	"short_name" : "My Board Games",
+	"description" : "The board game collection of Luke S. Phillips.",
+	"start_url" : ".",
+	"background_color" : "#eeeef1",
+	"theme_color" : "#171a1d",
+	"display" : "standalone",
+	"icons" : [
+		{
+			"src" : "./favicons/128x128.png",
+			"type" : "image/png",
+			"sizes" : "128x128"
+		},
+		{
+			"src" : "./favicons/180x180.png",
+			"type" : "image/png",
+			"sizes" : "180x180"
+		},
+		{
+			"src" : "./favicons/192x192.png",
+			"type" : "image/png",
+			"sizes" : "192x192"
+		},
+		{
+			"src" : "./favicons/512x512.png",
+			"type" : "image/png",
+			"sizes" : "512x512"
+		}
+	]
+}

@@ -23,6 +23,11 @@ import {
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+function isDeveloping ()
+{
+	return process.argv[2]?.toLowerCase() === 'develop';
+}
+
 function observe (path, handler)
 {
 	let working = false,
@@ -51,106 +56,128 @@ function observe (path, handler)
 	});
 }
 
-function isDeveloping ()
+async function buildCssAndJs (outdir)
 {
-	return process.argv[2]?.toLowerCase() === 'develop';
+	const config =
+	{
+		outdir,
+
+		entryPoints : [
+			'src/scripts/index.js',
+			'src/styles/index.css'
+		],
+
+		bundle : true,
+
+		minify : true,
+
+		jsx : 'automatic',
+
+		target : [
+			'es2022'
+		],
+
+		format : 'esm',
+
+		sourcemap : false
+	};
+
+	if (
+		isDeveloping()
+	)
+	{
+		const {
+			serve
+		} = await context({ ...config, sourcemap : 'linked' });
+
+		serve({
+			port     : 1992,
+			servedir : outdir
+		});
+	}
+	else
+	{
+		await build(config);
+	}
 }
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-const outdir = 'build';
-const config =
+async function copyResources (outdir)
 {
-	outdir,
+	async function copy ()
+	{
+		// Copy favicons.
+		await cp('src/resources/favicons', join(outdir, 'favicons'), {
+			recursive : true
+		});
 
-	entryPoints : [
-		'src/scripts/index.js',
-		'src/styles/index.css'
-	],
+		// Copy manifest.
+		await cp(
+			'src/resources/manifest.json', join(outdir, 'manifest.json')
+		);
+	}
 
-	bundle : true,
+	await copy();
 
-	minify : true,
+	if (
+		isDeveloping()
+	)
+	{
+		observe('src/resources', copy);
+	}
+}
 
-	jsx : 'automatic',
+async function renderTemplates (outdir, gamelist)
+{
+	await render(outdir, {
+		...gamelist, hash : Date.now()
+	});
 
-	target : [
-		'es2022'
-	],
+	if (
+		isDeveloping()
+	)
+	{
+		// Because we use JS for our "templates" they will be
+		// cached. With no way to purge this cache we need to
+		// perform re-renders in another process.
+		observe('src/templates', () => new Promise(resolve =>
+		{
+			const worker = new Worker(`
+				import {
+					workerData
+				} from 'node:worker_threads';
+				import {
+					render
+				} from './src/renderer.js';
 
-	format : 'esm',
+				await render(workerData.outdir, {
+					...workerData.gamelist, hash : Date.now()
+				});
+			`, {
+				eval : true, workerData : { outdir, gamelist }
+			});
 
-	sourcemap : false
-};
+			worker.on('error', error =>
+			{
+				console.error(error);
+
+				resolve();
+			});
+
+			worker.on('exit', resolve);
+		}));
+	}
+}
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 // Load gamelist.
 const gamelist = await collect('gamelist.yml');
 
-// Copy favicons.
-await cp('src/favicon', join(outdir, 'favicon'), {
-	recursive : true
-});
+// Render templates.
+await renderTemplates('build', gamelist);
 
-// Build HTML pages.
-await render(outdir, {
-	...gamelist, hash : Date.now()
-});
+// Copy resources.
+await copyResources('build');
 
-if (
-	isDeveloping()
-)
-{
-	const {
-		serve
-	} = await context({ ...config, sourcemap : 'linked' });
-
-	// Start build server.
-	serve({
-		port : 1992,
-		servedir : outdir
-	});
-
-	// Start watching templates.
-	//
-	// Because we use JS for our "templates" they will be
-	// cached. With no way to purge this cache we need to
-	// perform re-renders in another process.
-	observe('src/templates', () => new Promise(resolve =>
-	{
-		const worker = new Worker(`
-			import {
-				workerData
-			} from 'node:worker_threads';
-			import {
-				render
-			} from './src/renderer.js';
-
-			await render(workerData.outdir, {
-			   ...workerData.gamelist, hash : Date.now()
-			});
-		`, {
-			eval : true, workerData : { outdir, gamelist }
-		});
-
-		worker.on('error', error =>
-		{
-			console.error(error);
-
-			resolve();
-		});
-
-		worker.on('exit', resolve);
-	}));
-
-	// Start watching favicons.
-	observe('src/favicon', () => cp('src/favicon', join(outdir, 'favicon'), {
-		recursive : true
-	}));
-}
-else
-{
-	// Build JS & CSS.
-	await build(config);
-}
+// Build CSS & JS.
+await buildCssAndJs('build');
