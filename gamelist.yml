@@ -15,371 +15,393 @@ locations:
 games:
 
   - name: 6 nimmt!
-    id: 406321
+    bggId: 406321
+    bgaId: sechsnimmt
     favourite: true
     location: shelves
     quick: true
 
   - name: Agricola
-    id: 31260
+    bggId: 31260
+    bgaId: agricola
     location: storage
     expansions:
       - name: Farmers of the Moor
-        id: 43018
+        bggId: 43018
         location: storage
 
   - name: Argy Bargey
-    id: 352296
+    bggId: 352296
     location: storage
 
   - name: Azul
-    id: 230802
+    bggId: 230802
+    bgaId: azul
     location: shelves
     quick: true
 
   - name: Bandido
-    id: 191925
+    bggId: 191925
+    bgaId: bandido
     location: cupboard
     quick: true
 
   - name: Bandida
-    id: 299571
+    bggId: 299571
     location: cupboard
     quick: true
 
   - name: Books of Time
-    id: 372631
+    bggId: 372631
     location: cupboard
 
   - name: Boss Monster
-    id: 131835
+    bggId: 131835
     location: cupboard
     expansions:
       - name: Tools of Hero-Kind
-        id: 133772
+        bggId: 133772
         location: cupboard
       - name: Paper & Pixels
-        id: 164095
+        bggId: 164095
 
   - name: "Boss Monster 2: The Next Level"
-    id: 174973
+    bggId: 174973
     location: cupboard
 
   - name: Calico
-    id: 283155
+    bggId: 283155
     location: shelves
 
   - name: "Canine Chaos Card Game: Celebrity Edition"
-    id: 283000
+    bggId: 283000
     location: storage
 
   - name: Canvas
-    id: 290236
+    bggId: 290236
+    bgaId: canvas
     location: cupboard
     quick: true
 
   - name: Captain Flip
-    id: 393325
+    bggId: 393325
+    bgaId: captainflip
     location: cupboard
     quick: true
     expansions:
       - name: In the Jaws of the Kraken
-        id: 413556
+        bggId: 413556
 
   - name: Cascadia
-    id: 295947
+    bggId: 295947
     location: shelves
 
   - name: Chocobo's Crystal Hunt
-    id: 205226
+    bggId: 205226
     location: shelves
     quick: true
     expansions:
       - name: Chocobo's Dungeons & Monsters
-        id: 223685
+        bggId: 223685
 
   - name: Citadels
-    id: 478
+    bggId: 478
+    bgaId: citadels
     location: cupboard
     quick: true
 
   - name: Codenames
-    id: 178900
+    bggId: 178900
     location: shelves
     quick: true
 
   - name: Dixit
-    id: 39856
+    bggId: 39856
     location: shelves
     quick: true
 
   - name: Dobble
-    id: 63268
+    bggId: 63268
+    bgaId: dobble
     location: storage
     quick: true
 
   - name: Everdell
-    id: 199792
+    bggId: 199792
     location: shelves
     favourite: true
     expansions:
       - name: Bellfaire
-        id: 289057
+        bggId: 289057
       - name: Mistwood
-        id: 332397
+        bggId: 332397
       - name: Newleaf
-        id: 332390
+        bggId: 332390
       - name: Pearlbrook
-        id: 259996
+        bggId: 259996
       - name: Spirecrest
-        id: 289056
+        bggId: 289056
 
   - name: Flamecraft
-    id: 336986
+    bggId: 336986
     location: cupboard
 
   - name: Forbidden Desert
-    id: 136063
+    bggId: 136063
     location: shelves
 
   - name: Four Gardens
-    id: 296043
+    bggId: 296043
+    bgaId: fourgardens
     location: shelves
 
   - name: Forest Shuffle
-    id: 391163
+    bggId: 391163
+    bgaId: forestshuffle
     location: cupboard
     expansions:
       - name: Alpine
-        id: 412576
+        bggId: 412576
 
   - name: Friday
-    id: 43570
+    bggId: 43570
     location: storage
 
   - name: Gizmos
-    id: 246192
+    bggId: 246192
+    bgaId: gizmos
     location: shelves
     favourite: true
 
   - name: Gloom
-    id: 12692
+    bggId: 12692
     location: shelves
     quick: true
 
   - name: Go Nuts for Donuts
-    id: 184346
+    bggId: 184346
+    bgaId: gonutsfordonuts
     location: shelves
     favourite: true
     quick: true
 
   - name: Gorinto
-    id: 270293
+    bggId: 270293
     location: shelves
     quick: true
 
   - name: Hanabi
-    id: 98778
+    bggId: 98778
+    bgaId: hanabi
     location: shelves
     favourite: true
     quick: true
 
   - name: "Hanabi Deluxe: What a Show!"
-    id: 290357
+    bggId: 290357
     location: cupboard
     favourite: true
     quick: true
 
   - name: Herd Mentality
-    id: 311322
+    bggId: 311322
     location: storage
     quick: true
 
   - name: Keep the Heroes Out!
-    id: 333255
+    bggId: 333255
     location: shelves
     favourite: true
     expansions:
       - name: Guild Master's Revenge Expansion
-        id: 351550
+        bggId: 351550
       - name: The Great Dreamer Expansion
-        id: 351549
+        bggId: 351549
 
   - name: Little Town
-    id: 241266
+    bggId: 241266
     location: cupboard
 
   - name: Mysterium
-    id: 181304
+    bggId: 181304
     location: shelves
     expansions:
       - name: Secrets & Lies
-        id: 216465
+        bggId: 216465
         location: cupboard
       - name: Hidden Signs
-        id: 192661
+        bggId: 192661
         location: cupboard
 
   - name: Mysterium Park
-    id: 301767
+    bggId: 301767
     location: shelves
     quick: true
 
   - name: Oh My Goods!
-    id: 183840
+    bggId: 183840
     location: shelves
     expansions:
       - name: Escape to Canyon Brook
-        id: 233363
+        bggId: 233363
         location: shelves
       - name: Longsdale in Revolt
-        id: 209323
+        bggId: 209323
         location: shelves
 
   - name: Olympus Fluxx
-    id: 356084
+    bggId: 356084
     location: shelves
     quick: true
 
   - name: Paleo
-    id: 300531
+    bggId: 300531
     location: cupboard
     favourite: true
     expansions:
       - name: A New Beginning
-        id: 342501
+        bggId: 342501
         location: cupboard
 
   - name: Patchwork
-    id: 163412
+    bggId: 163412
+    bgaId: patchwork
     location: shelves
     quick: true
 
   - name: Point Salad
-    id: 274960
+    bggId: 274960
     location: shelves
     quick: true
 
   - name: Rhino Hero
-    id: 91514
+    bggId: 91514
     location: cupboard
     quick: true
 
   - name: "Room on the Broom: Memory Card Game"
-    id: 199954
+    bggId: 199954
     location: storage
     quick: true
 
   - name: Sakura Arms
-    id: 204493
+    bggId: 204493
     location: cupboard
 
   - name: Scythe
-    id: 169786
+    bggId: 169786
+    bgaId: scythe
     location: storage
 
   - name: Septima
-    id: 360692
+    bggId: 360692
     location: cupboard
 
   - name: Smash Up
-    id: 122522
+    bggId: 122522
     location: storage
     expansions:
       - name: Big in Japan
-        id: 216199
+        bggId: 216199
 
   - name: Sushi Go!
-    id: 133473
+    bggId: 133473
+    bgaId: sushigo
     location: cupboard
     quick: true
 
   - name: Takenoko
-    id: 70919
+    bggId: 70919
+    bgaId: takenoko
     location: cupboard
     favourite: true
     expansions:
       - name: Chibis
-        id: 174095
+        bggId: 174095
 
   - name: Tavern Masters
-    id: 210418
+    bggId: 210418
     location: cupboard
     quick: true
 
   - name: "The Crew: Mission Deep Sea"
-    id: 324856
+    bggId: 324856
+    bgaId: thecrewdeepsea
     location: shelves
     favourite: true
     quick: true
 
   - name: Turing Machine
-    id: 356123
+    bggId: 356123
+    bgaId: turingmachine
     location: shelves
     favourite: true
     quick: true
 
   - name: The Isle of Cats
-    id: 281259
+    bggId: 281259
+    bgaId: theisleofcats
     location: shelves
     favourite: true
     expansions:
       - name: Late Arrivals
-        id: 287361
+        bggId: 287361
 
   - name: The One Hundred Torii
-    id: 256509
+    bggId: 256509
     location: shelves
 
   - name: The Quacks of Quedlinburg
-    id: 244521
+    bggId: 244521
     location: shelves
 
   - name: The Ravens of Thri Sahashri
-    id: 150293
+    bggId: 150293
     location: storage
 
   - name: Throw Throw Avocado
-    id: 340420
+    bggId: 340420
     location: cupboard
     quick: true
 
   - name: Tiny Towns
-    id: 265736
+    bggId: 265736
     location: shelves
     quick: true
 
   - name: "UNO: Super Mario"
-    id: 209095
+    bggId: 209095
     location: storage
     quick: true
 
   - name: Viticulture Essential Edition
-    id: 183394
+    bggId: 183394
+    bgaId: viticulture
     location: shelves
 
   - name: Whirling Witchcraft
-    id: 335275
+    bggId: 335275
     location: cupboard
     favourite: true
     quick: true
 
   - name: Wingspan
-    id: 266192
+    bggId: 266192
+    bgaId: wingspan
     location: shelves
     expansions:
       - name: European
-        id: 290448
+        bggId: 290448
       - name: Asia
-        id: 366161
+        bggId: 366161
         location: shelves
 
   - name: Wyrmspan
-    id: 410201
+    bggId: 410201
     location: shelves
     favourite: true
 
   - name: Yes! No! Game
-    id: 13356
+    bggId: 13356
     location: storage
     quick: true

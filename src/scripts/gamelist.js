@@ -19,6 +19,11 @@ function isQuick (game, criteria)
 	return !criteria.quick || game.hasAttribute('data-quick');
 }
 
+function isOnBga (game, criteria)
+{
+	return !criteria.bga || game.hasAttribute('data-bga');
+}
+
 function renderCount (count, one, many, zero = many)
 {
 	switch (count)
@@ -63,12 +68,12 @@ export function setup ()
 			let playable = false;
 
 			if (
-				!isAccessible(game, detail) || !isQuick(game, detail)
+				!isAccessible(game, detail) || !isQuick(game, detail) || !isOnBga(game, detail)
 			)
 			{
 				game.style.display = 'none';
 
-				continue; // eslint-disable-line no-continue
+				continue;
 			}
 
 			const expansions = game.querySelectorAll('.game__expansion');

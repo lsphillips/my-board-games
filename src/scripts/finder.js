@@ -21,6 +21,7 @@ export function setup ()
 		const detail = {
 			accessible : form.get('accessible') !== null,
 			quick      : form.get('quick') !== null,
+			bga        : form.get('bga') !== null,
 			players    : parseInt(
 				form.get('players'), 10
 			)

@@ -4,17 +4,16 @@ import {
 import {
 	load
 } from 'js-yaml';
-import {
-	getThings
-} from './bgg.js';
+import * as bgg from './bgg.js';
+import * as bga from './bga.js';
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 async function createGameLookup (games)
 {
-	const things = await getThings(games.flatMap(game =>
+	const things = await bgg.getThings(games.flatMap(game =>
 	{
-		return game.expansions ? [game.id, game.expansions.map(expansion => expansion.id)] : game.id;
+		return game.expansions ? [game.bggId, game.expansions.map(expansion => expansion.bggId)] : game.bggId;
 	}));
 
 	return new Map(
@@ -23,7 +22,7 @@ async function createGameLookup (games)
 }
 
 function embellishExpansion ({
-	id,
+	bggId,
 	name,
 	location = null
 }, game, locations, lookup)
@@ -35,7 +34,7 @@ function embellishExpansion ({
 		throw new Error(`Game expansion ${name} is in an unknown location.`);
 	}
 
-	const metadata = lookup.get(id);
+	const metadata = lookup.get(bggId);
 
 	if (!metadata)
 	{
@@ -54,8 +53,9 @@ function embellishExpansion ({
 }
 
 function embellishGame ({
-	id,
+	bggId,
 	name,
+	bgaId = null,
 	location = null,
 	favourite = false,
 	expansions = [],
@@ -69,7 +69,7 @@ function embellishGame ({
 		throw new Error(`Game ${name} is in an unknown location.`);
 	}
 
-	const metadata = lookup.get(id);
+	const metadata = lookup.get(bggId);
 
 	if (!metadata)
 	{
@@ -79,6 +79,9 @@ function embellishGame ({
 	const game = {
 		...metadata, name, favourite, quick
 	};
+
+	// BGA.
+	game.bgaUri = bgaId ? bga.buildGameUri(bgaId) : null;
 
 	// Location.
 	game.location   = locations[location].name;

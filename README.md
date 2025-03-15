@@ -15,7 +15,8 @@ The games property is a required array that defines the games collection. Each i
 | Property     | Required | Type      | Default | Description                                                                                     |
 | ------------ | :------: | :-------: | :-----: | ----------------------------------------------------------------------------------------------- |
 | `name`       | Yes      | `string`  |         | The name of the board game.                                                                     |
-| `id`         | Yes      | `number`  |         | The Board Game Geek ID for the board game.                                                      |
+| `bggId`      | Yes      | `number`  |         | The Board Game Geek ID for the board game.                                                      |
+| `bgaId`      | No       | `string`  |         | The Board Game Arena ID for the board game.                                                     |
 | `favourite`  | No       | `boolean` | `false` | Indicates whether the board game is a favourite or not.                                         |
 | `location`   | Yes      | `string`  |         | The key corresponding to a location, defined [here](#locations), that the board game is stored. |
 | `expansions` | No       | `array`   |         | The expansions owned for the board game. This is an array of [expansion objects](#expansions).  |
@@ -26,7 +27,7 @@ The games property is a required array that defines the games collection. Each i
 | Property     | Required | Type      | Default | Description                                                                                                                                                                   |
 | ------------ | :------: | :-------: | :-----: | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `name`       | Yes      | `string`  |         | The name of the board game expansion.                                                                                                                                         |
-| `id`         | Yes      | `number`  |         | The Board Game Geek ID for the board game expansion.                                                                                                                          |
+| `bggId`      | Yes      | `number`  |         | The Board Game Geek ID for the board game expansion.                                                                                                                          |
 | `location`   | No       | `string`  |         | The key corresponding to a location, defined [here](#locations), that the board game is stored. If this is omitted then it's assumed that it is located in the base game box. |
 
 ## Locations

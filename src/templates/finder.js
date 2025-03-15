@@ -48,6 +48,10 @@ export function renderFinder (stats, {
 					label     : 'Quick to play only',
 					className : 'finder__quick'
 				}) }
+				${ renderCheckbox('bga', {
+					label     : 'Available on Board Game Arena',
+					className : 'finder__bga'
+				}) }
 			</div>
 			<div class="finder__actions">
 				<button class="finder__submit">
