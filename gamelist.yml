@@ -254,6 +254,11 @@ games:
     location: shelves
     quick: true
 
+  - name: Paku Paku
+    bggId: 214491
+    location: cupboard
+    quick: true
+
   - name: Paleo
     bggId: 300531
     location: cupboard
