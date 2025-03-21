@@ -26,7 +26,7 @@ function renderPlayerCount (min, max)
 function renderThumbnail (url, className)
 {
 	return `<div class="thumbnail ${className}">
-		<img class="thumbnail__image" src="${url}" alt="" />
+		<img class="thumbnail__image" src="${url}" alt="" loading="lazy" />
 	</div>`;
 }
 
