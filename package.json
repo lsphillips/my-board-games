@@ -12,7 +12,7 @@
 	"devDependencies" :
 	{
         "js-yaml" : "4.1.0",
-        "fast-xml-parser" : "5.0.8",
+        "fast-xml-parser" : "5.0.9",
         "htmlnano" : "2.1.1",
         "esbuild" : "0.25.1",
         "eslint" : "9.22.0",
