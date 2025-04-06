@@ -30,6 +30,13 @@ games:
         bggId: 43018
         location: storage
 
+  - name: "Apothebakery: The Culinary Alchemists"
+    bggId: 411202
+    location: cupboard
+    expansions:
+      - name: Arcane Adventures
+        bggId: 441755
+
   - name: Argy Bargey
     bggId: 352296
     location: storage
