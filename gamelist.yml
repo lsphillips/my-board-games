@@ -122,6 +122,12 @@ games:
     location: shelves
     quick: true
 
+  - name: Coup
+    bggId: 131357
+    bgaId: coupcitystate
+    location: cupboard
+    quick: true
+
   - name: Dixit
     bggId: 39856
     location: shelves
