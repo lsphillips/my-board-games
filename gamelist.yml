@@ -114,7 +114,7 @@ games:
   - name: Citadels
     bggId: 478
     bgaId: citadels
-    location: cupboard
+    location: shelves
     quick: true
 
   - name: Codenames
@@ -125,7 +125,8 @@ games:
   - name: Coup
     bggId: 131357
     bgaId: coupcitystate
-    location: cupboard
+    favourite: true
+    location: shelves
     quick: true
 
   - name: Dixit
@@ -384,7 +385,7 @@ games:
 
   - name: Tiny Towns
     bggId: 265736
-    location: shelves
+    location: cupboard
     quick: true
 
   - name: "UNO: Super Mario"
@@ -399,7 +400,7 @@ games:
 
   - name: Whirling Witchcraft
     bggId: 335275
-    location: cupboard
+    location: shelves
     favourite: true
     quick: true
 
