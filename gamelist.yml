@@ -294,12 +294,12 @@ games:
   - name: Patchwork
     bggId: 163412
     bgaId: patchwork
-    tabletopiaId: point-salad
     location: shelves
     quick: true
 
   - name: Point Salad
     bggId: 274960
+    tabletopiaId: point-salad
     location: shelves
     quick: true
 
