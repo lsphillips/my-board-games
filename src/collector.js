@@ -80,8 +80,8 @@ function embellishGame ({
 		...metadata, name, favourite, quick
 	};
 
-	// BGA.
-	game.bga = bgaId ? { id : bgaId, uri : bga.buildGameUri(bgaId) } : null;
+	// Board Game Arena.
+	game.bgaUri = bgaId ? bga.buildGameUri(bgaId) : null;
 
 	// Location.
 	game.location   = locations[location].name;

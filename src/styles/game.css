@@ -93,13 +93,20 @@
 
 .game__favourite
 {
+	display: block;
 	width: 20px;
 	height: 20px;
 	fill: #ffd700;
 }
 
+.game__bga-link
+{
+	/* Here to remind that exists. */
+}
+
 .game__bga
 {
+	display: block;
 	width: 20px;
 	height: 20px;
 }
