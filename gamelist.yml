@@ -78,6 +78,7 @@ games:
 
   - name: Calico
     bggId: 283155
+    tabletopiaId: calico
     location: shelves
 
   - name: "Canine Chaos Card Game: Celebrity Edition"
@@ -101,6 +102,7 @@ games:
 
   - name: Cascadia
     bggId: 295947
+    tabletopiaId: cascadia
     location: shelves
 
   - name: Chocobo's Crystal Hunt
@@ -142,6 +144,7 @@ games:
 
   - name: Everdell
     bggId: 199792
+    tabletopiaId: everdell
     location: shelves
     favourite: true
     expansions:
@@ -166,6 +169,7 @@ games:
 
   - name: Four Gardens
     bggId: 296043
+    tabletopiaId: four-gardens
     bgaId: fourgardens
     location: shelves
 
@@ -195,12 +199,14 @@ games:
   - name: Go Nuts for Donuts
     bggId: 184346
     bgaId: gonutsfordonuts
+    tabletopiaId: go-nuts-for-donuts
     location: shelves
     favourite: true
     quick: true
 
   - name: Gorinto
     bggId: 270293
+    tabletopiaId: gorinto
     location: shelves
     quick: true
 
@@ -219,11 +225,13 @@ games:
 
   - name: Herd Mentality
     bggId: 311322
+    tabletopiaId: herd-mentality
     location: storage
     quick: true
 
   - name: Keep the Heroes Out!
     bggId: 333255
+    tabletopiaId: keep-heroes-out
     location: shelves
     favourite: true
     expansions:
@@ -275,6 +283,7 @@ games:
 
   - name: Paleo
     bggId: 300531
+    tabletopiaId: paleo
     location: cupboard
     favourite: true
     expansions:
@@ -285,6 +294,7 @@ games:
   - name: Patchwork
     bggId: 163412
     bgaId: patchwork
+    tabletopiaId: point-salad
     location: shelves
     quick: true
 
@@ -305,11 +315,13 @@ games:
 
   - name: Sakura Arms
     bggId: 204493
+    tabletopiaId: sakura-arms-lvl99
     location: cupboard
 
   - name: Scythe
     bggId: 169786
     bgaId: scythe
+    tabletopiaId: scythe
     location: storage
 
   - name: Septima
@@ -340,12 +352,14 @@ games:
 
   - name: Tavern Masters
     bggId: 210418
+    tabletopiaId: tavern-masters
     location: cupboard
     quick: true
 
   - name: "The Crew: Mission Deep Sea"
     bggId: 324856
     bgaId: thecrewdeepsea
+    tabletopiaId: mission-deep-sea
     location: shelves
     favourite: true
     quick: true
@@ -360,6 +374,7 @@ games:
   - name: The Isle of Cats
     bggId: 281259
     bgaId: theisleofcats
+    tabletopiaId: the-isle-of-cats
     location: shelves
     favourite: true
     expansions:
@@ -368,10 +383,12 @@ games:
 
   - name: The One Hundred Torii
     bggId: 256509
+    tabletopiaId: the-one-hundred-torii
     location: shelves
 
   - name: The Quacks of Quedlinburg
     bggId: 244521
+    tabletopiaId: the-quacks-of-quedlinburg
     location: shelves
 
   - name: The Ravens of Thri Sahashri
@@ -396,10 +413,12 @@ games:
   - name: Viticulture Essential Edition
     bggId: 183394
     bgaId: viticulture
+    tabletopiaId: viticulture-essential-edition
     location: shelves
 
   - name: Whirling Witchcraft
     bggId: 335275
+    tabletopiaId: whirling-witchcraft
     location: shelves
     favourite: true
     quick: true
@@ -407,6 +426,7 @@ games:
   - name: Wingspan
     bggId: 266192
     bgaId: wingspan
+    tabletopiaId: wingspan
     location: shelves
     expansions:
       - name: European
@@ -417,6 +437,7 @@ games:
 
   - name: Wyrmspan
     bggId: 410201
+    tabletopiaId: wyrmspan
     location: shelves
     favourite: true
 

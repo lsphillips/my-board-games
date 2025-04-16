@@ -6,6 +6,7 @@ import {
 } from 'js-yaml';
 import * as bgg from './bgg.js';
 import * as bga from './bga.js';
+import * as tabletopia from './tabletopia.js';
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -56,6 +57,7 @@ function embellishGame ({
 	bggId,
 	name,
 	bgaId = null,
+	tabletopiaId = null,
 	location = null,
 	favourite = false,
 	expansions = [],
@@ -82,6 +84,9 @@ function embellishGame ({
 
 	// Board Game Arena.
 	game.bgaUri = bgaId ? bga.buildGameUri(bgaId) : null;
+
+	// Tabletopia.
+	game.tabletopiaUri = tabletopiaId ? tabletopia.buildGameUri(tabletopiaId) : null;
 
 	// Location.
 	game.location   = locations[location].name;
