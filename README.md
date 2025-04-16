@@ -12,15 +12,16 @@ The web application is generated from a [game list file](gamelist.yml) that is e
 
 The games property is a required array that defines the games collection. Each item in an array is an object that represents a single board game that has the following properties:
 
-| Property     | Required | Type      | Default | Description                                                                                     |
-| ------------ | :------: | :-------: | :-----: | ----------------------------------------------------------------------------------------------- |
-| `name`       | Yes      | `string`  |         | The name of the board game.                                                                     |
-| `bggId`      | Yes      | `number`  |         | The Board Game Geek ID for the board game.                                                      |
-| `bgaId`      | No       | `string`  |         | The Board Game Arena ID for the board game.                                                     |
-| `favourite`  | No       | `boolean` | `false` | Indicates whether the board game is a favourite or not.                                         |
-| `location`   | Yes      | `string`  |         | The key corresponding to a location, defined [here](#locations), that the board game is stored. |
-| `expansions` | No       | `array`   |         | The expansions owned for the board game. This is an array of [expansion objects](#expansions).  |
-| `quick`      | No       | `boolean` | `false` | Indicates if the board game is quick to play.                                                   |
+| Property       | Required | Type      | Default | Description                                                                                     |
+| -------------- | :------: | :-------: | :-----: | ----------------------------------------------------------------------------------------------- |
+| `name`         | Yes      | `string`  |         | The name of the board game.                                                                     |
+| `bggId`        | Yes      | `number`  |         | The Board Game Geek ID for the board game.                                                      |
+| `bgaId`        | No       | `string`  |         | The Board Game Arena ID for the board game.                                                     |
+| `tabletopiaId` | No       | `string`  |         | The Tabletopia ID for the board game.                                                           |
+| `favourite`    | No       | `boolean` | `false` | Indicates whether the board game is a favourite or not.                                         |
+| `location`     | Yes      | `string`  |         | The key corresponding to a location, defined [here](#locations), that the board game is stored. |
+| `expansions`   | No       | `array`   |         | The expansions owned for the board game. This is an array of [expansion objects](#expansions).  |
+| `quick`        | No       | `boolean` | `false` | Indicates if the board game is quick to play.                                                   |
 
 ### Expansions
 

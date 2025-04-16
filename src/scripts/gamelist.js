@@ -24,6 +24,11 @@ function isOnBga (game, criteria)
 	return !criteria.bga || game.hasAttribute('data-bga');
 }
 
+function isOnTabletopia (game, criteria)
+{
+	return !criteria.tabletopia || game.hasAttribute('data-tabletopia');
+}
+
 function renderCount (count, one, many, zero = many)
 {
 	switch (count)
@@ -68,7 +73,7 @@ export function setup ()
 			let playable = false;
 
 			if (
-				!isAccessible(game, detail) || !isQuick(game, detail) || !isOnBga(game, detail)
+				!isAccessible(game, detail) || !isQuick(game, detail) || !isOnBga(game, detail) || !isOnTabletopia(game, detail)
 			)
 			{
 				game.style.display = 'none';

@@ -52,6 +52,10 @@ export function renderFinder (stats, {
 					label     : 'Available on Board Game Arena',
 					className : 'finder__bga'
 				}) }
+				${ renderCheckbox('tabletopia', {
+					label     : 'Available on Tabletopia',
+					className : 'finder__tabletopia'
+				}) }
 			</div>
 			<div class="finder__actions">
 				<button class="finder__submit">

@@ -43,14 +43,14 @@
 .game__thumbnail
 {
 	display: block;
-	width: 55px;
+	width: 60px;
 	margin: 0 10px 0 0;
 	border-radius: 3px;
 }
 
 .game__info
 {
-	flex: 0 0 calc(100% - 65px);
+	flex: 0 0 calc(100% - 70px);
 }
 
 .game__name
@@ -111,6 +111,18 @@
 	height: 20px;
 }
 
+.game__tabletopia-link
+{
+	/* Here to remind that exists. */
+}
+
+.game__tabletopia
+{
+	display: block;
+	width: 20px;
+	height: 20px;
+}
+
 .game__expansions
 {
 	box-sizing: border-box;
@@ -140,14 +152,14 @@
 .expansion__thumbnail
 {
 	display: block;
-	width: 40px;
+	width: 45px;
 	margin: 0 10px 0 0;
 	border-radius: 3px;
 }
 
 .expansion__info
 {
-	flex: 1 0 calc(100% - 50px);
+	flex: 1 0 calc(100% - 55px);
 }
 
 .expansion__name
