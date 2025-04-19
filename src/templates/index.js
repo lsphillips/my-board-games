@@ -1,4 +1,7 @@
 import {
+	renderReusableIcons
+} from './icons.js';
+import {
 	renderHeader
 } from './header.js';
 import {
@@ -49,6 +52,8 @@ export function renderIndex ({
 		</head>
 
 		<body class="app">
+
+			${ renderReusableIcons() }
 
 			${ renderHeader({
 				className : 'app__header'

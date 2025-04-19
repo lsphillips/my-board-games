@@ -34,7 +34,7 @@
 	display: flex;
 	flex-flow: row wrap;
 	align-items: center;
-	padding: 10px 30px 10px 10px;
+	padding: 10px;
 	background: #fff;
 	border-radius: 3px;
 	border-bottom: 1px solid #ccc;
@@ -45,7 +45,6 @@
 	display: block;
 	width: 60px;
 	margin: 0 10px 0 0;
-	border-radius: 3px;
 }
 
 .game__info
@@ -75,52 +74,58 @@
 
 .game__metadata
 {
+	display: flex;
+	align-items: center;
+	column-gap: 10px;
 	margin: 5px 0 0;
 	color: #666;
 	font-size: 12px;
 }
 
-.game__icons
+.game__metadata-item
 {
-	position: absolute;
-	top: 5px;
-	right: 5px;
 	display: flex;
-	flex-flow: column nowrap;
-	row-gap: 5px;
-	width: 20px;
+	align-items: center;
 }
 
+.game__players,
+.game__location,
 .game__favourite
 {
 	display: block;
-	width: 20px;
-	height: 20px;
-	fill: #ffd700;
+	width: auto;
+	height: 16px;
+	margin: 0 5px 0 0;
+	fill: currentColor;
 }
 
-.game__bga-link
+.game__players   { aspect-ratio: 0.625 }
+.game__location  { aspect-ratio: 0.75  }
+.game__favourite { aspect-ratio: 1.125 }
+
+.game__availability
 {
-	/* Here to remind that exists. */
+	position: absolute;
+	right: 5px;
+	bottom: 5px;
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: flex-end;
+	column-gap: 5px;
 }
 
-.game__bga
-{
-	display: block;
-	width: 20px;
-	height: 20px;
-}
-
-.game__tabletopia-link
-{
-	/* Here to remind that exists. */
-}
-
+.game__bga,
 .game__tabletopia
 {
 	display: block;
-	width: 20px;
-	height: 20px;
+	width: 16px;
+	height: 16px;
+}
+
+.game__bga--unavailable,
+.game__tabletopia--unavailable
+{
+	opacity: 0.5;
 }
 
 .game__expansions
@@ -154,7 +159,6 @@
 	display: block;
 	width: 45px;
 	margin: 0 10px 0 0;
-	border-radius: 3px;
 }
 
 .expansion__info
@@ -184,7 +188,29 @@
 
 .expansion__metadata
 {
+	display: flex;
+	align-items: center;
+	column-gap: 10px;
 	margin: 5px 0 0;
 	color: #666;
-	font-size: 11px;
+	font-size: 12px;
 }
+
+.expansion__metadata-item
+{
+	display: flex;
+	align-items: center;
+}
+
+.expansion__players,
+.expansion__location
+{
+	display: block;
+	width: auto;
+	height: 16px;
+	margin: 0 5px 0 0;
+	fill: currentColor;
+}
+
+.expansion__players  { aspect-ratio: 0.625 }
+.expansion__location { aspect-ratio: 0.75  }
