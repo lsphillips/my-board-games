@@ -41,19 +41,19 @@ export function renderFinder (stats, {
 					className : 'finder__players'
 				}) }
 				${ renderCheckbox('accessible', {
-					label     : 'Easy to reach only',
+					label     : 'Easy to reach',
 					className : 'finder__accessible'
 				}) }
 				${ renderCheckbox('quick', {
-					label     : 'Quick to play only',
+					label     : 'Quick to play',
 					className : 'finder__quick'
 				}) }
 				${ renderCheckbox('bga', {
-					label     : 'Available on Board Game Arena',
+					label     : 'Playable on Board Game Arena',
 					className : 'finder__bga'
 				}) }
 				${ renderCheckbox('tabletopia', {
-					label     : 'Available on Tabletopia',
+					label     : 'Playable on Tabletopia',
 					className : 'finder__tabletopia'
 				}) }
 			</div>
