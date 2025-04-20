@@ -15,7 +15,7 @@ function renderCount (count, one, many, zero = many)
 
 function renderPlayerCount (min, max)
 {
-	if (min === max)
+	if (min >= max)
 	{
 		return min;
 	}
@@ -47,14 +47,14 @@ function renderExpansion ({
 				</a>
 			</h2>
 			<small class="expansion__metadata">
-				<span class="expansion__metadata-item" aria-label="Player Count">
-					<svg xmlns="http://www.w3.org/2000/svg" class="expansion__players">
+				<span class="expansion__players" aria-label="Player Count">
+					<svg xmlns="http://www.w3.org/2000/svg" class="expansion__players-icon">
 						<use href="#players" />
 					</svg>
 					${ renderPlayerCount(players.min, players.max) }
 				</span>
-				<span class="expansion__metadata-item" aria-label="Location">
-					<svg xmlns="http://www.w3.org/2000/svg" class="expansion__location">
+				<span class="expansion__location" aria-label="Location">
+					<svg xmlns="http://www.w3.org/2000/svg" class="expansion__location-icon">
 						<use href="#location" />
 					</svg>
 					${location}
@@ -71,7 +71,7 @@ function renderExpansions (expansions)
 		return '';
 	}
 
-	return `<ul class="game__expansions">
+	return `<ul class="game__expansions" aria-label="Game expansions">
 		${ expansions.reduce((acc, expansion) => acc + `<li class="game__expansion"
 			data-min-players="${expansion.players.min}"
 			data-max-players="${expansion.players.max}"
@@ -80,50 +80,6 @@ function renderExpansions (expansions)
 			${ renderExpansion(expansion) }
 		</li>`, '') }
 	</ul>`;
-}
-
-function renderBgaStatus (uri)
-{
-	if (uri)
-	{
-		return `<a href="${uri}" target="_blank">
-			<svg xmlns="http://www.w3.org/2000/svg" class="game__bga">
-				<title>
-					Available to play on Board Game Arena
-				</title>
-				<use href="#bga" />
-			</svg>
-		</a>`;
-	}
-
-	return `<svg xmlns="http://www.w3.org/2000/svg" class="game__bga game__bga--unavailable">
-		<title>
-			Not available to play on Board Game Arena
-		</title>
-		<use href="#bga" />
-	</svg>`;
-}
-
-function renderTabletopiaStatus (uri)
-{
-	if (uri)
-	{
-		return `<a href="${uri}" target="_blank">
-			<svg xmlns="http://www.w3.org/2000/svg" class="game__tabletopia">
-				<title>
-					Available to play on Tabletopia
-				</title>
-				<use href="#tabletopia" />
-			</svg>
-		</a>`;
-	}
-
-	return `<svg xmlns="http://www.w3.org/2000/svg" class="game__tabletopia game__tabletopia--unavailable">
-		<title>
-			Not available to play on Tabletopia
-		</title>
-		<use href="#tabletopia" />
-	</svg>`;
 }
 
 function renderGame ({
@@ -147,29 +103,37 @@ function renderGame ({
 				</a>
 			</h2>
 			<small class="game__metadata">
-				<span class="game__metadata-item" aria-label="Player Count">
-					<svg xmlns="http://www.w3.org/2000/svg" class="game__players">
+				<span class="game__players" aria-label="Player Count">
+					<svg xmlns="http://www.w3.org/2000/svg" class="game__players-icon">
 						<use href="#players" />
 					</svg>
 					${ renderPlayerCount(players.min, players.max) }
 				</span>
-				<span class="game__metadata-item" aria-label="Location">
-					<svg xmlns="http://www.w3.org/2000/svg" class="game__location">
+				<span class="game__location" aria-label="Location">
+					<svg xmlns="http://www.w3.org/2000/svg" class="game__location-icon">
 						<use href="#location" />
 					</svg>
 					${location}
 				</span>
-				${ favourite ? `<span class="game__metadata-item">
-					<svg xmlns="http://www.w3.org/2000/svg" class=" game__favourite">
-						<use href="#favourite" />
+				${ tabletopiaUri ? `<a href="${tabletopiaUri}" target="_blank" title="Available to play on Tabletopia" class="game__tabletopia">
+					<svg xmlns="http://www.w3.org/2000/svg" class="game__tabletopia-icon">
+						<use href="#tabletopia" />
 					</svg>
-					Favourite
-				</span>` : '' }
+					Tabletopia
+				</a>` : '' }
+				${ bgaUri ? `<a href="${bgaUri}" target="_blank" title="Available to play on Board Game Arena" class="game__bga">
+					<svg xmlns="http://www.w3.org/2000/svg" class="game__bga-icon">
+						<use href="#bga" />
+					</svg>
+					BGA
+				</a>` : '' }
 			</small>
-		</div>
-		<div class="game__availability">
-			${ renderBgaStatus(bgaUri) }
-			${ renderTabletopiaStatus(tabletopiaUri) }
+			${ favourite ? `<svg xmlns="http://www.w3.org/2000/svg" class="game__favourite">
+				<title>
+					One of our favourites
+				</title>
+				<use href="#favourite" />
+			</svg>` : '' }
 		</div>
 		${ renderExpansions(expansions) }
 	</article>`;
