@@ -49,7 +49,7 @@
 
 .game__info
 {
-	flex: 0 0 calc(100% - 70px);
+	flex: 0 0 calc(100% - 85px);
 }
 
 .game__name
@@ -82,15 +82,43 @@
 	font-size: 12px;
 }
 
-.game__metadata-item
+.game__players,
+.game__location,
+.game__bga,
+.game__tabletopia
 {
 	display: flex;
 	align-items: center;
 }
 
-.game__players,
-.game__location,
-.game__favourite
+.game__bga
+{
+	color: #82519c;
+	text-decoration: none;
+
+	&:hover,
+	&:focus
+	{
+		text-decoration: underline;
+	}
+}
+
+.game__tabletopia
+{
+	color: #47a1d2;
+	text-decoration: none;
+
+	&:hover,
+	&:focus
+	{
+		text-decoration: underline;
+	}
+}
+
+.game__players-icon,
+.game__location-icon,
+.game__bga-icon,
+.game__tabletopia-icon
 {
 	display: block;
 	width: auto;
@@ -99,33 +127,19 @@
 	fill: currentColor;
 }
 
-.game__players   { aspect-ratio: 0.625 }
-.game__location  { aspect-ratio: 0.75  }
-.game__favourite { aspect-ratio: 1.125 }
+.game__players-icon    { aspect-ratio: 0.625 }
+.game__location-icon   { aspect-ratio: 0.750 }
+.game__bga-icon        { aspect-ratio: 1.000 }
+.game__tabletopia-icon { aspect-ratio: 1.116 }
 
-.game__availability
+.game__favourite
 {
 	position: absolute;
+	top: 5px;
 	right: 5px;
-	bottom: 5px;
-	display: flex;
-	flex-flow: row nowrap;
-	justify-content: flex-end;
-	column-gap: 5px;
-}
-
-.game__bga,
-.game__tabletopia
-{
-	display: block;
-	width: 16px;
-	height: 16px;
-}
-
-.game__bga--unavailable,
-.game__tabletopia--unavailable
-{
-	opacity: 0.5;
+	width: 18px;
+	height: 18px;
+	fill: gold;
 }
 
 .game__expansions
@@ -163,7 +177,7 @@
 
 .expansion__info
 {
-	flex: 1 0 calc(100% - 55px);
+	flex: 0 0 calc(100% - 70px);
 }
 
 .expansion__name
@@ -196,14 +210,15 @@
 	font-size: 12px;
 }
 
-.expansion__metadata-item
+.expansion__players,
+.expansion__location
 {
 	display: flex;
 	align-items: center;
 }
 
-.expansion__players,
-.expansion__location
+.expansion__players-icon,
+.expansion__location-icon
 {
 	display: block;
 	width: auto;
@@ -212,5 +227,5 @@
 	fill: currentColor;
 }
 
-.expansion__players  { aspect-ratio: 0.625 }
-.expansion__location { aspect-ratio: 0.75  }
+.expansion__players-icon  { aspect-ratio: 0.625 }
+.expansion__location-icon { aspect-ratio: 0.750 }
