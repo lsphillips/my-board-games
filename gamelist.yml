@@ -47,6 +47,12 @@ games:
     location: shelves
     quick: true
 
+  - name: "Azul: Summer Pavilion"
+    bggId: 287954
+    bgaId: azulsummerpavilion
+    location: cupboard
+    quick: true
+
   - name: Bandido
     bggId: 191925
     bgaId: bandido
