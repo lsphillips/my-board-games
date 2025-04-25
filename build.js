@@ -15,11 +15,9 @@ import {
 	context
 } from 'esbuild';
 import {
+	render,
 	collect
-} from './src/collector.js';
-import {
-	render
-} from './src/renderer.js';
+} from './src/builder.js';
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -30,6 +28,8 @@ function isDeveloping ()
 
 function observe (path, handler)
 {
+	console.log(`Observing "${path}" for changes.`);
+
 	let working = false,
 		queuing = false;
 
@@ -58,6 +58,8 @@ function observe (path, handler)
 
 async function buildCssAndJs (outdir)
 {
+	console.log('Building CSS & JS.');
+
 	const config =
 	{
 		outdir,
@@ -94,6 +96,8 @@ async function buildCssAndJs (outdir)
 			port     : 1992,
 			servedir : outdir
 		});
+
+		console.log('Website is now available locally on port 1992.');
 	}
 	else
 	{
@@ -103,6 +107,8 @@ async function buildCssAndJs (outdir)
 
 async function copyResources (outdir)
 {
+	console.log('Copying resources and manifest.');
+
 	async function copy ()
 	{
 		// Copy favicons.
@@ -126,8 +132,10 @@ async function copyResources (outdir)
 	}
 }
 
-async function renderTemplates (outdir, gamelist)
+async function buildPages (outdir, gamelist)
 {
+	console.log('Building HTML pages.');
+
 	await render(outdir, {
 		...gamelist, timestamp : Date.now()
 	});
@@ -171,10 +179,12 @@ async function renderTemplates (outdir, gamelist)
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 // Load gamelist.
+console.log('Reading & embellishing the gamelist.');
+
 const gamelist = await collect('gamelist.yml');
 
 // Render templates.
-await renderTemplates('build', gamelist);
+await buildPages('build', gamelist);
 
 // Copy resources.
 await copyResources('build');
