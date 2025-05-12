@@ -13,7 +13,7 @@
 	{
         "js-yaml" : "4.1.0",
         "fast-xml-parser" : "5.2.3",
-        "htmlnano" : "2.1.1",
+        "htmlnano" : "2.1.2",
         "esbuild" : "0.25.4",
         "eslint" : "9.26.0",
         "eslint-plugin-n" : "17.17.0",
