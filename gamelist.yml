@@ -44,24 +44,24 @@ games:
   - name: Azul
     bggId: 230802
     bgaId: azul
-    location: shelves
+    location: storage
     quick: true
 
   - name: "Azul: Summer Pavilion"
     bggId: 287954
     bgaId: azulsummerpavilion
-    location: cupboard
+    location: shelves
     quick: true
 
   - name: Bandido
     bggId: 191925
     bgaId: bandido
-    location: cupboard
+    location: shelves
     quick: true
 
   - name: Bandida
     bggId: 299571
-    location: cupboard
+    location: shelves
     quick: true
 
   - name: Books of Time
@@ -100,7 +100,7 @@ games:
   - name: Captain Flip
     bggId: 393325
     bgaId: captainflip
-    location: cupboard
+    location: shelves
     quick: true
     expansions:
       - name: In the Jaws of the Kraken
@@ -151,7 +151,7 @@ games:
   - name: Everdell
     bggId: 199792
     tabletopiaId: everdell
-    location: shelves
+    location: storage
     favourite: true
     expansions:
       - name: Bellfaire
@@ -182,10 +182,12 @@ games:
   - name: Forest Shuffle
     bggId: 391163
     bgaId: forestshuffle
-    location: cupboard
+    location: shelves
     expansions:
       - name: Alpine
         bggId: 412576
+      - name: Woodland Edge
+        bggId: 424129
 
   - name: Friday
     bggId: 43570
@@ -284,7 +286,7 @@ games:
 
   - name: Paku Paku
     bggId: 214491
-    location: cupboard
+    location: shelves
     quick: true
 
   - name: Paleo
