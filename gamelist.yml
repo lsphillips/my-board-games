@@ -237,6 +237,13 @@ games:
     location: storage
     quick: true
 
+  - name: Hive Pocket Ultimate
+    bggId: 427593
+    bgaId: hive
+    location: shelves
+    favourite: true
+    quick: true
+
   - name: Keep the Heroes Out!
     bggId: 333255
     tabletopiaId: keep-heroes-out
