@@ -238,7 +238,7 @@ games:
     quick: true
 
   - name: Hive Pocket Ultimate
-    bggId: 727925
+    bggId: 427593
     bgaId: hive
     location: shelves
     favourite: true
