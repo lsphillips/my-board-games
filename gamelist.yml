@@ -244,6 +244,11 @@ games:
     favourite: true
     quick: true
 
+  - name: Insider
+    bggId: 206051
+    location: shelves
+    quick: true
+
   - name: Keep the Heroes Out!
     bggId: 333255
     tabletopiaId: keep-heroes-out
