@@ -186,6 +186,8 @@ games:
     expansions:
       - name: Alpine
         bggId: 412576
+      - name: Exploration
+        bggId: 438231
       - name: Woodland Edge
         bggId: 424129
 
