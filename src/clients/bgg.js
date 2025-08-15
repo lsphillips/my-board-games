@@ -4,6 +4,10 @@ import {
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+const cache = {};
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 function parseThingsResponse (xml)
 {
 	const {
@@ -80,14 +84,25 @@ export async function getGamesAndExpansions (bggIds)
 		return results;
 	}
 
-	const response = await fetch(`https://boardgamegeek.com/xmlapi2/thing?id=${ bggIds.join(',') }`);
+	const query = `id=${ bggIds.join(',') }`;
+
+	if (
+		cache[query]
+	)
+	{
+		return cache[query];
+	}
+
+	const response = await fetch(`https://boardgamegeek.com/xmlapi2/thing?${ query }`);
 
 	if (response.status !== 200)
 	{
 		throw new Error(`Unable to fetch games and expansions from Board Game Geeks. The API responded with status code ${response.status}.`);
 	}
 
-	return parseThingsResponse(
+	const result = cache[query] = parseThingsResponse( // eslint-disable-line require-atomic-updates
 		await response.text()
 	);
+
+	return result;
 }
