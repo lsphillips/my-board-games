@@ -4,42 +4,44 @@ import {
 import {
 	load
 } from 'js-yaml';
-import * as bgg from './bgg.js';
-import * as bga from './bga.js';
-import * as tabletopia from './tabletopia.js';
+import * as bgg from './clients/bgg.js';
+import * as bga from './clients/bga.js';
+import * as tabletopia from './clients/tabletopia.js';
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-async function createGameLookup (games)
+async function loadBggMetadata (games)
 {
-	const things = await bgg.getThings(games.flatMap(game =>
+	const bggIds = games.flatMap(game =>
 	{
 		return game.expansions ? [game.bggId, game.expansions.map(expansion => expansion.bggId)] : game.bggId;
-	}));
+	});
+
+	const gamesAndExpansions = await bgg.getGamesAndExpansions(bggIds);
 
 	return new Map(
-		things.map(thing => [thing.id, thing])
+		gamesAndExpansions.map(game => [game.id, game])
 	);
 }
 
-function embellishExpansion ({
+function getEmbellishedExpansion ({
 	bggId,
 	name,
 	location = null
-}, game, locations, lookup)
+}, game, locations, bggMetadata)
 {
 	if (
 		location && !locations[location]
 	)
 	{
-		throw new Error(`Game expansion ${name} is in an unknown location.`);
+		throw new Error(`Game expansion "${name}" is in an unknown location.`);
 	}
 
-	const metadata = lookup.get(bggId);
+	const metadata = bggMetadata.get(bggId);
 
 	if (!metadata)
 	{
-		throw new Error(`Metadata for game expansion ${name} could not be found. Please ensure the correct BGG ID is configured.`);
+		throw new Error(`BGG metadata for game expansion "${name}" could not be found. Please ensure the correct BGG ID is configured.`);
 	}
 
 	const expansion = {
@@ -53,7 +55,7 @@ function embellishExpansion ({
 	return expansion;
 }
 
-function embellishGame ({
+function getEmbellishedGame ({
 	bggId,
 	name,
 	bgaId = null,
@@ -62,20 +64,20 @@ function embellishGame ({
 	favourite = false,
 	expansions = [],
 	quick = false
-}, locations, lookup)
+}, locations, bggMetadata)
 {
 	if (
 		!locations[location]
 	)
 	{
-		throw new Error(`Game ${name} is in an unknown location.`);
+		throw new Error(`Game "${name}" is in an unknown location.`);
 	}
 
-	const metadata = lookup.get(bggId);
+	const metadata = bggMetadata.get(bggId);
 
 	if (!metadata)
 	{
-		throw new Error(`Metadata for game ${name} could not be found. Please ensure the correct BGG ID is configured.`);
+		throw new Error(`BGG metadata for game "${name}" could not be found. Please ensure the correct BGG ID is configured.`);
 	}
 
 	const game = {
@@ -93,12 +95,12 @@ function embellishGame ({
 	game.accessible = locations[location].accessible;
 
 	// Expansions.
-	game.expansions = expansions.map(expansion => embellishExpansion(expansion, game, locations, lookup));
+	game.expansions = expansions.map(expansion => getEmbellishedExpansion(expansion, game, locations, bggMetadata));
 
 	return game;
 }
 
-function getCollectionStats (games)
+function getGamelistStatistics (games)
 {
 	let gameCount      = games.length,
 		expansionCount = 0,
@@ -129,21 +131,21 @@ function getCollectionStats (games)
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-export async function collect (gamelist)
+export async function readGamelist (pathToGamelist)
 {
-	const collection = load(
-		await readFile(gamelist, 'utf8')
+	const gamelist = load(
+		await readFile(pathToGamelist, 'utf8')
 	);
 
-	const lookup = await createGameLookup(collection.games);
+	const metadata = await loadBggMetadata(gamelist.games);
 
-	const games = collection.games
+	const games = gamelist.games
 		.map(
-			game => embellishGame(game, collection.locations, lookup)
+			game => getEmbellishedGame(game, gamelist.locations, metadata)
 		)
 		.sort((a, b) => a.name.localeCompare(b.name));
 
 	return {
-		games, stats : getCollectionStats(games)
+		games, stats : getGamelistStatistics(games)
 	};
 }

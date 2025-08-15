@@ -15,9 +15,15 @@ import {
 	context
 } from 'esbuild';
 import {
-	render,
-	collect
-} from './src/builder.js';
+	readGamelist
+} from './src/gamelist-reader.js';
+import {
+	renderPages
+} from './src/page-renderer.js';
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+const outdir = 'website';
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -26,14 +32,12 @@ function isDeveloping ()
 	return process.argv[2]?.toLowerCase() === 'develop';
 }
 
-function observe (path, handler)
+function observe (paths, handler)
 {
-	console.log(`Observing "${path}" for changes.`);
-
 	let working = false,
 		queuing = false;
 
-	watch(path, { recursive : true }, async function work ()
+	async function work (_, path)
 	{
 		if (working)
 		{
@@ -45,7 +49,10 @@ function observe (path, handler)
 		working = true;
 		queuing = false;
 
-		await handler();
+		if (path)
+		{
+			await handler(path);
+		}
 
 		working = false; // eslint-disable-line require-atomic-updates
 
@@ -53,10 +60,95 @@ function observe (path, handler)
 		{
 			work();
 		}
-	});
+	}
+
+	for (const path of paths)
+	{
+		watch(path, { recursive : true }, work);
+	}
 }
 
-async function buildCssAndJs (outdir)
+async function buildPages ()
+{
+	console.log('Building pages.');
+
+	let gamelist = await readGamelist('gamelist.yml');
+
+	await renderPages(outdir, {
+		...gamelist, timestamp : Date.now()
+	});
+
+	if (
+		isDeveloping()
+	)
+	{
+		// Because we use JS for our "templates" they will be
+		// cached. With no way to purge this cache we need to
+		// perform re-renders in another process.
+		observe(['src/templates', 'gamelist.yml'], path => new Promise(async resolve => // eslint-disable-line no-async-promise-executor
+		{
+			if (
+				path.endsWith('gamelist.yml')
+			)
+			{
+				gamelist = await readGamelist('gamelist.yml');
+			}
+
+			const worker = new Worker(`
+				import {
+					workerData
+				} from 'node:worker_threads';
+				import {
+					renderPages
+				} from './src/page-renderer.js';
+
+				await renderPages(workerData.outdir, {
+					...workerData.gamelist, timestamp : Date.now()
+				});
+			`, {
+				eval : true, workerData : { outdir, gamelist }
+			});
+
+			worker.on('error', error =>
+			{
+				console.error(error);
+
+				resolve();
+			});
+
+			worker.on('exit', resolve);
+		}));
+	}
+}
+
+async function copyResources ()
+{
+	console.log('Copying resources and manifest.');
+
+	async function copy ()
+	{
+		// Copy favicons.
+		await cp('src/resources/favicons', join(outdir, 'favicons'), {
+			recursive : true
+		});
+
+		// Copy manifest.
+		await cp(
+			'src/resources/manifest.json', join(outdir, 'manifest.json')
+		);
+	}
+
+	await copy();
+
+	if (
+		isDeveloping()
+	)
+	{
+		observe(['src/resources'], copy);
+	}
+}
+
+async function buildCssAndJs ()
 {
 	console.log('Building CSS & JS.');
 
@@ -105,89 +197,13 @@ async function buildCssAndJs (outdir)
 	}
 }
 
-async function copyResources (outdir)
-{
-	console.log('Copying resources and manifest.');
-
-	async function copy ()
-	{
-		// Copy favicons.
-		await cp('src/resources/favicons', join(outdir, 'favicons'), {
-			recursive : true
-		});
-
-		// Copy manifest.
-		await cp(
-			'src/resources/manifest.json', join(outdir, 'manifest.json')
-		);
-	}
-
-	await copy();
-
-	if (
-		isDeveloping()
-	)
-	{
-		observe('src/resources', copy);
-	}
-}
-
-async function buildPages (outdir, gamelist)
-{
-	console.log('Building HTML pages.');
-
-	await render(outdir, {
-		...gamelist, timestamp : Date.now()
-	});
-
-	if (
-		isDeveloping()
-	)
-	{
-		// Because we use JS for our "templates" they will be
-		// cached. With no way to purge this cache we need to
-		// perform re-renders in another process.
-		observe('src/templates', () => new Promise(resolve =>
-		{
-			const worker = new Worker(`
-				import {
-					workerData
-				} from 'node:worker_threads';
-				import {
-					render
-				} from './src/renderer.js';
-
-				await render(workerData.outdir, {
-					...workerData.gamelist, timestamp : Date.now()
-				});
-			`, {
-				eval : true, workerData : { outdir, gamelist }
-			});
-
-			worker.on('error', error =>
-			{
-				console.error(error);
-
-				resolve();
-			});
-
-			worker.on('exit', resolve);
-		}));
-	}
-}
-
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-// Load gamelist.
-console.log('Reading & embellishing the gamelist.');
-
-const gamelist = await collect('gamelist.yml');
-
-// Render templates.
-await buildPages('build', gamelist);
+// Build pages.
+await buildPages();
 
 // Copy resources.
-await copyResources('build');
+await copyResources();
 
 // Build CSS & JS.
-await buildCssAndJs('build');
+await buildCssAndJs();

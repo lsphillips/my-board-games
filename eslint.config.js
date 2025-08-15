@@ -6,7 +6,7 @@ import andFromWritingStupidWebApplications  from 'eslint-config-protect-me-from-
 
 export default [
 	{
-		ignores : ['build/**/*']
+		ignores : ['website/**/*']
 	},
 	...protectMeFromMyStupidity(),
 	...andFromWritingStupidWebApplications([
@@ -15,6 +15,7 @@ export default [
 	...andFromWritingStupidNodeApplications([
 		'src/*.js',
 		'src/templates/**/*.js',
+		'src/clients/**/*.js',
 		'build.js'
 	])
 ];

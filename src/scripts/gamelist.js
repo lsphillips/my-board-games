@@ -73,7 +73,10 @@ export function setup ()
 			let playable = false;
 
 			if (
-				!isAccessible(game, detail) || !isQuick(game, detail) || !isOnBga(game, detail) || !isOnTabletopia(game, detail)
+				!isAccessible(game, detail) ||
+				!isQuick(game, detail) ||
+				!isOnBga(game, detail) ||
+				!isOnTabletopia(game, detail)
 			)
 			{
 				game.style.display = 'none';

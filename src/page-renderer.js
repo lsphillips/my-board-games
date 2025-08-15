@@ -12,12 +12,13 @@ import {
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-export async function render (outdir, {
+export async function renderPages (outdir, {
 	games,
 	stats,
 	timestamp
 })
 {
+	// Ensure output directory exists.
 	await mkdir(outdir, {
 		recursive : true
 	});
