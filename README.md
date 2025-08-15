@@ -44,7 +44,7 @@ The locations property is a required key-value map defining the locations where 
 
 ### Building
 
-To build a deployable bundle in the `build` directory, run this command:
+To build a deployable bundle in the `website` directory, run this command:
 
 ``` bash
 npm run build
@@ -59,7 +59,7 @@ npm run start
 ```
 
 > [!TIP]
-> Changes in [client JavaScript](src/scripts), [stylesheets](src/styles), [templates](src/templates) and [favicons](src/favicon) will trigger the website to be rebuilt. Any other code file changes will require a server restart.
+> Changes in [client JavaScript](src/scripts), [stylesheets](src/styles), [templates](src/templates), [favicons](src/favicon) and the [gamelist](gamelist.yml) will trigger the website to be rebuilt.
 
 ### Code Quality
 

@@ -4,12 +4,7 @@ import {
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-function buildGameUri (id)
-{
-	return `https://boardgamegeek.com/boardgame/${id}`;
-}
-
-function parseItems (xml)
+function parseThingsResponse (xml)
 {
 	const {
 		items
@@ -53,7 +48,7 @@ function parseItems (xml)
 				min : minplayers.value,
 				max : maxplayers.value
 			},
-			uri : buildGameUri(id)
+			uri : `https://boardgamegeek.com/boardgame/${id}`
 		});
 	}
 
@@ -62,7 +57,7 @@ function parseItems (xml)
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-export async function getThings (bggIds)
+export async function getGamesAndExpansions (bggIds)
 {
 	if (!bggIds.length)
 	{
@@ -71,28 +66,28 @@ export async function getThings (bggIds)
 
 	if (bggIds.length > 10)
 	{
-		const things = [];
+		const results = [];
 
 		for (let i = 0, l = bggIds.length; i < l; i += 10)
 		{
-			const block = await getThings(
+			const items = await getGamesAndExpansions(
 				bggIds.slice(i, i + 10)
 			);
 
-			things.push(...block);
+			results.push(...items);
 		}
 
-		return things;
+		return results;
 	}
 
 	const response = await fetch(`https://boardgamegeek.com/xmlapi2/thing?id=${ bggIds.join(',') }`);
 
 	if (response.status !== 200)
 	{
-		throw new Error(`Unable to fetch things from Board Game Geeks. The API responded with status code ${response.status}.`);
+		throw new Error(`Unable to fetch games and expansions from Board Game Geeks. The API responded with status code ${response.status}.`);
 	}
 
-	return parseItems(
+	return parseThingsResponse(
 		await response.text()
 	);
 }
