@@ -8,28 +8,22 @@
 	"display" : "standalone",
 	"icons" : [
 		{
-			"src" : "./favicons/128x128.png",
+			"src" : "./favicons/128x128.png?v1",
 			"type" : "image/png",
 			"sizes" : "128x128",
-			"purpose" : "any maskable"
+			"purpose" : "maskable"
 		},
 		{
-			"src" : "./favicons/180x180.png",
-			"type" : "image/png",
-			"sizes" : "180x180",
-			"purpose" : "any maskable"
-		},
-		{
-			"src" : "./favicons/192x192.png",
+			"src" : "./favicons/192x192.png?v1",
 			"type" : "image/png",
 			"sizes" : "192x192",
-			"purpose" : "any maskable"
+			"purpose" : "maskable"
 		},
 		{
-			"src" : "./favicons/512x512.png",
+			"src" : "./favicons/512x512.png?v1",
 			"type" : "image/png",
 			"sizes" : "512x512",
-			"purpose" : "any maskable"
+			"purpose" : "maskable"
 		}
 	]
 }
