@@ -57,7 +57,7 @@ function observe (paths, handler)
 		{
 			work();
 		}
-	};
+	}
 
 	for (const path of paths)
 	{
@@ -82,7 +82,7 @@ async function buildPages ()
 		// Because we use JS for our "templates" they will be
 		// cached. With no way to purge this cache we need to
 		// perform re-renders in another process.
-		observe(['src/templates', 'gamelist.yml'], () => new Promise(async resolve =>
+		observe(['src/templates', 'gamelist.yml'], () => new Promise(async resolve => // eslint-disable-line no-async-promise-executor
 		{
 			gamelist = await readGamelist('gamelist.yml');
 
