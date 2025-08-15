@@ -37,7 +37,7 @@ function observe (paths, handler)
 	let working = false,
 		queuing = false;
 
-	async function work ()
+	async function work (_, path)
 	{
 		if (working)
 		{
@@ -49,7 +49,10 @@ function observe (paths, handler)
 		working = true;
 		queuing = false;
 
-		await handler();
+		if (path)
+		{
+			await handler(path);
+		}
 
 		working = false; // eslint-disable-line require-atomic-updates
 
@@ -82,9 +85,14 @@ async function buildPages ()
 		// Because we use JS for our "templates" they will be
 		// cached. With no way to purge this cache we need to
 		// perform re-renders in another process.
-		observe(['src/templates', 'gamelist.yml'], () => new Promise(async resolve => // eslint-disable-line no-async-promise-executor
+		observe(['src/templates', 'gamelist.yml'], path => new Promise(async resolve => // eslint-disable-line no-async-promise-executor
 		{
-			gamelist = await readGamelist('gamelist.yml');
+			if (
+				path.endsWith('gamelist.yml')
+			)
+			{
+				gamelist = await readGamelist('gamelist.yml');
+			}
 
 			const worker = new Worker(`
 				import {
