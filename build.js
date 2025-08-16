@@ -17,13 +17,10 @@ import {
 import {
 	readGamelist
 } from './src/gamelist-reader.js';
-import {
-	renderPages
-} from './src/page-renderer.js';
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-const outdir = 'website';
+const outdir = 'website', gamelist = 'gamelist.yml';
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -51,7 +48,14 @@ function observe (paths, handler)
 
 		if (path)
 		{
-			await handler(path);
+			try
+			{
+				await handler(path);
+			}
+			catch (error)
+			{
+				console.error(error);
+			}
 		}
 
 		working = false; // eslint-disable-line require-atomic-updates
@@ -68,32 +72,31 @@ function observe (paths, handler)
 	}
 }
 
-async function buildPages ()
+async function renderPages ()
 {
-	console.log('Building pages.');
+	console.log('Rendering pages.');
 
-	let gamelist = await readGamelist('gamelist.yml');
+	let data;
 
-	await renderPages(outdir, {
-		...gamelist, timestamp : Date.now()
-	});
-
-	if (
-		isDeveloping()
-	)
+	async function render (loadGameList)
 	{
-		// Because we use JS for our "templates" they will be
-		// cached. With no way to purge this cache we need to
-		// perform re-renders in another process.
-		observe(['src/templates', 'gamelist.yml'], path => new Promise(async resolve => // eslint-disable-line no-async-promise-executor
+		if (loadGameList)
 		{
-			if (
-				path.endsWith('gamelist.yml')
-			)
-			{
-				gamelist = await readGamelist('gamelist.yml');
-			}
+			console.log('Loading game list.');
 
+			data = await readGamelist(gamelist);
+		}
+
+		// Because we use JS for our "templates" they will
+		// be cached. With no way to purge this cache we
+		// need to perform renders in another process.
+		//
+		// This isn't really necessary for regular builds
+		// but the performance penalty is negligible and
+		// using the same approach in all scenarios keeps
+		// this solution leaner.
+		return new Promise((resolve, reject) =>
+		{
 			const worker = new Worker(`
 				import {
 					workerData
@@ -103,25 +106,33 @@ async function buildPages ()
 				} from './src/page-renderer.js';
 
 				await renderPages(workerData.outdir, {
-					...workerData.gamelist, timestamp : Date.now()
+					...workerData.data, timestamp : Date.now()
 				});
 			`, {
-				eval : true, workerData : { outdir, gamelist }
+				eval : true, workerData : { outdir, data }
 			});
 
-			worker.on('error', error =>
-			{
-				console.error(error);
-
-				resolve();
-			});
-
+			worker.on('error', reject);
 			worker.on('exit', resolve);
-		}));
+		});
+	}
+
+	render(true);
+
+	if (
+		isDeveloping()
+	)
+	{
+		observe(['src/templates', gamelist], async path =>
+		{
+			await render(
+				path.endsWith(gamelist)
+			);
+		});
 	}
 }
 
-async function copyResources ()
+async function copyAssets ()
 {
 	console.log('Copying resources and manifest.');
 
@@ -199,11 +210,11 @@ async function buildCssAndJs ()
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-// Build pages.
-await buildPages();
+// Render pages.
+await renderPages();
 
-// Copy resources.
-await copyResources();
+// Copy assets.
+await copyAssets();
 
 // Build CSS & JS.
 await buildCssAndJs();
