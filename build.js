@@ -82,8 +82,6 @@ async function renderPages ()
 	{
 		if (loadGameList)
 		{
-			console.log('Loading game list.');
-
 			data = await readGamelist(gamelist);
 		}
 
