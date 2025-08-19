@@ -31,7 +31,7 @@ The games property is a required array that defines the games collection. Each i
 | `bggId`      | Yes      | `number`  |         | The Board Game Geek ID for the board game expansion.                                                                                                                          |
 | `location`   | No       | `string`  |         | The key corresponding to a location, defined [here](#locations), that the board game is stored. If this is omitted then it's assumed that it is located in the base game box. |
 
-## Locations
+### Locations
 
 The locations property is a required key-value map defining the locations where board games are stored. Each location object has the following properties:
 
@@ -41,6 +41,9 @@ The locations property is a required key-value map defining the locations where 
 | `accessible` | Yes      | `boolean` |         | Indicates whether the location is easy to access or not. |
 
 ## Development
+
+> [!NOTE]
+> You will need [Node.js](https://nodejs.org/) v23 (or higher) installed.
 
 ### Building
 
@@ -59,7 +62,7 @@ npm run start
 ```
 
 > [!TIP]
-> Changes in [client JavaScript](src/scripts), [stylesheets](src/styles), [templates](src/templates), [favicons](src/favicon) and the [gamelist](gamelist.yml) will trigger the website to be rebuilt.
+> Changes in [client JavaScript](src/scripts), [stylesheets](src/styles), [templates](src/templates), [resources](src/resources) and the [gamelist](gamelist.yml) will trigger the website to be rebuilt automatically.
 
 ### Code Quality
 
