@@ -43,7 +43,7 @@ The locations property is a required key-value map defining the locations where 
 ## Development
 
 > [!NOTE]
-> You will need [Node.js](https://nodejs.org/) v23 (or higher) installed.
+> You will need [Node.js](https://nodejs.org/) v24 (or higher) installed.
 
 ### Building
 
