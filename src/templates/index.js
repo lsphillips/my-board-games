@@ -20,6 +20,11 @@ export function renderIndex ({
 	games,
 	stats,
 	timestamp
+}, {
+	stylesheet,
+	script,
+	favicon,
+	manifest
 })
 {
 	return `<!DOCTYPE html>
@@ -38,16 +43,16 @@ export function renderIndex ({
 
 			<meta name="theme-color" content="#171a1d" />
 
-			<link href="styles/index.css?${timestamp}" type="text/css" rel="stylesheet" />
+			<link rel="icon" href="${ favicon('32x32.png') }" sizes="32x32" />
+			<link rel="icon" href="${ favicon('128x128.png') }" sizes="128x128" />
+			<link rel="icon" href="${ favicon('192x192.png') }" sizes="192x192" />
+			<link rel="icon" href="${ favicon('512x512.png') }" sizes="512x512" />
 
-			<link rel="icon" href="favicons/32x32.png?${timestamp}" sizes="32x32" />
-			<link rel="icon" href="favicons/128x128.png?${timestamp}" sizes="128x128" />
-			<link rel="icon" href="favicons/192x192.png?${timestamp}" sizes="192x192" />
-			<link rel="icon" href="favicons/512x512.png?${timestamp}" sizes="512x512" />
+			<link rel="apple-touch-icon" href="${ favicon('180x180.png') }" />
 
-			<link rel="apple-touch-icon" href="favicons/180x180.png?${timestamp}" />
+			<link href="${ stylesheet('index.css') }" rel="stylesheet" />
 
-			<link rel="manifest" href="manifest.json?${timestamp}" />
+			<link rel="manifest" href="${ manifest() }" />
 
 		</head>
 
@@ -72,7 +77,7 @@ export function renderIndex ({
 				className : 'app__finder'
 			}) }
 
-			<script type="text/javascript" src="scripts/index.js?${timestamp}"></script>
+			<script type="text/javascript" src="${ script('index.js') }"></script>
 
 		</body>
 

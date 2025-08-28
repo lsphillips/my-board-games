@@ -7,14 +7,16 @@ import {
 } from 'node:path';
 import nano from 'htmlnano';
 import {
+	createUrlBuilder
+} from './url-builder.js';
+import {
 	renderIndex
 } from './templates/index.js';
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-export async function renderPages (outdir, {
-	games,
-	stats,
+export async function renderGamelist (outdir, { games, stats }, {
+	paths,
 	timestamp
 })
 {
@@ -23,12 +25,14 @@ export async function renderPages (outdir, {
 		recursive : true
 	});
 
+	const urls = createUrlBuilder(paths, timestamp);
+
 	const page = await nano.process(
 		renderIndex({
 			games,
 			stats,
 			timestamp
-		}),
+		}, urls),
 		{
 			collapseAttributeWhitespace : true,
 			collapseWhitespace          : 'aggressive',
