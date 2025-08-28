@@ -20,7 +20,13 @@ import {
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-const outdir = 'website', gamelist = 'gamelist.yml';
+const outdir = 'website', gamelist = 'gamelist.yml', paths = {
+	base     : '/my-board-games',
+	js       : 'scripts',
+	css      : 'styles',
+	favicons : 'favicons',
+	manifest : 'manifest.json'
+};
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -29,7 +35,7 @@ function isDeveloping ()
 	return process.argv[2]?.toLowerCase() === 'develop';
 }
 
-function observe (paths, handler)
+function observe (targets, handler)
 {
 	let working = false,
 		queuing = false;
@@ -66,9 +72,9 @@ function observe (paths, handler)
 		}
 	}
 
-	for (const path of paths)
+	for (const target of targets)
 	{
-		watch(path, { recursive : true }, work);
+		watch(target, { recursive : true }, work);
 	}
 }
 
@@ -100,14 +106,20 @@ async function renderPages ()
 					workerData
 				} from 'node:worker_threads';
 				import {
-					renderPages
-				} from './src/page-renderer.js';
+					renderGamelist
+				} from './src/gamelist-renderer.js';
 
-				await renderPages(workerData.outdir, {
-					...workerData.data, timestamp : Date.now()
+				const {
+					outdir,
+					data,
+					paths
+				} = workerData;
+
+				await renderGamelist(outdir, data, {
+					paths, timestamp : Date.now()
 				});
 			`, {
-				eval : true, workerData : { outdir, data }
+				eval : true, workerData : { outdir, data, paths }
 			});
 
 			worker.on('error', reject);
@@ -207,6 +219,13 @@ async function buildCssAndJs ()
 }
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+if (
+	isDeveloping()
+)
+{
+	paths.base = '/';
+}
 
 // Render pages.
 await renderPages();
