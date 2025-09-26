@@ -5,7 +5,7 @@ import {
 import {
 	join
 } from 'node:path';
-import nano from 'htmlnano';
+import * as nano from 'htmlnano';
 import {
 	createUrlBuilder
 } from './url-builder.js';
